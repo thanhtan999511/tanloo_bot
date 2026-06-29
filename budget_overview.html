@@ -2,64 +2,64 @@
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>MCH-SCF-CAPEX | Budget Overview</title>
 <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;600;700;800&family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 <style>
 
 * { box-sizing:border-box; margin:0; padding:0; }
-.title{font-size:15px;font-weight:900;color:#fff;} .subtitle{font-size:9px;color:#64748b;margin-top:3px;}
-.badge{display:inline-block;background:#e8a020;color:#000;font-size:9px;font-weight:800;padding:2px 8px;border-radius:10px;margin-top:4px;}
-table{width:100%;border-collapse:collapse;font-size:11px;margin-top:14px;table-layout:fixed;}
-col.c-rank{width:32px;} col.c-site{width:54px;} col.c-name{width:auto;}
-col.c-budget{width:90px;} col.c-inap{width:90px;} col.c-outap{width:90px;} col.c-cip{width:90px;}
-thead tr{background:#1a2744;}
+table{width:100%;border-collapse:collapse;font-size:11px;table-layout:fixed;}
+col.c-rank{width:36px;} col.c-site{width:56px;} col.c-name{width:auto;}
+col.c-n{width:88px;}
+thead tr{background:#1a2744;position:sticky;top:0;z-index:5;}
 thead th{padding:9px 10px;font-weight:800;font-size:10px;color:#94a3b8;text-transform:uppercase;letter-spacing:0.5px;border-bottom:1px solid #2a3a5c;text-align:left;}
 thead th.num{text-align:right;}
-tbody tr:nth-child(odd){background:#0d1525;} tbody tr:nth-child(even){background:#0f1a30;}
+tbody tr:nth-child(odd){background:#0d1525;}
+tbody tr:nth-child(even){background:#0f1a30;}
 tbody tr{border-bottom:1px solid #0f172a;}
-tbody td{padding:8px 10px;vertical-align:middle;text-align:left;}
+tbody td{padding:7px 10px;vertical-align:middle;text-align:left;}
 tbody td.num{text-align:right;font-weight:700;}
 .site-badge{display:inline-block;background:#1e3a5f;color:#60a5fa;font-size:9px;font-weight:800;padding:2px 5px;border-radius:4px;}
 .proj-name{font-size:10.5px;font-weight:600;color:#e2e8f0;}
 
-*, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
-body { background:#0a0f1e; font-family:'Be Vietnam Pro','Montserrat',sans-serif; color:#fff; min-height:100vh; }
-.app { max-width:1280px; margin:0 auto; padding:24px 20px; }
-/* ── Header ── */
-.page-header { background:linear-gradient(135deg,#0d1525 0%,#0a1a3a 100%); border:1px solid #1e3a5f; border-radius:14px; padding:20px 28px; margin-bottom:20px; display:flex; justify-content:space-between; align-items:center; }
-.page-title { font-size:20px; font-weight:800; color:#fff; letter-spacing:-0.5px; }
-.page-subtitle { font-size:11px; color:#64748b; margin-top:4px; }
-.as-of { font-size:10px; color:#32EACB; font-weight:600; }
-/* ── KPI Pills ── */
-.kpi-row { display:flex; gap:12px; margin-bottom:20px; }
-.kpi { flex:1; background:#0d1525; border:1px solid #1e3a5f; border-radius:10px; padding:14px 18px; }
-.kpi-lbl { font-size:10px; color:#64748b; font-weight:700; text-transform:uppercase; letter-spacing:0.5px; }
-.kpi-val { font-size:26px; font-weight:900; color:#fff; margin-top:4px; line-height:1; }
-.kpi-sub { font-size:10px; color:#94a3b8; margin-top:3px; }
-.teal { color:#32EACB !important; }
-.yellow { color:#e8a020 !important; }
-/* ── Charts Row ── */
-.charts-row { display:grid; grid-template-columns:1fr 2fr; gap:16px; margin-bottom:20px; }
-.chart-card { background:#0d1525; border:1px solid #1e3a5f; border-radius:12px; padding:16px; }
-.chart-title { font-size:12px; font-weight:800; color:#fff; margin-bottom:10px; }
-/* ── Tabs ── */
-.tabs-wrap { background:#0d1525; border:1px solid #1e3a5f; border-radius:12px; overflow:hidden; }
-.tab-nav { display:flex; border-bottom:1px solid #1e3a5f; background:#060d1a; }
-.tab-btn { flex:1; padding:12px; font-size:11px; font-weight:700; color:#64748b; background:none; border:none; cursor:pointer; font-family:inherit; transition:all 0.2s; border-bottom:3px solid transparent; }
-.tab-btn.active { color:#32EACB; border-bottom-color:#32EACB; background:#0d1525; }
-.tab-btn:hover { color:#94a3b8; }
-.tab-pane { display:none; padding:0; max-height:520px; overflow-y:auto; }
-.tab-pane.active { display:block; }
-/* Footer */
-.footer { text-align:center; margin-top:20px; padding:12px; font-size:10px; color:#334155; }
-.back-link { color:#32EACB; text-decoration:none; font-weight:700; }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{background:#0a0f1e;font-family:'Be Vietnam Pro','Montserrat',sans-serif;color:#fff;min-height:100vh;}
+.app{max-width:1280px;margin:0 auto;padding:24px 20px;}
+.page-header{background:linear-gradient(135deg,#0d1525 0%,#0a1a3a 100%);border:1px solid #1e3a5f;border-radius:14px;padding:20px 28px;margin-bottom:20px;display:flex;justify-content:space-between;align-items:center;}
+.page-title{font-size:20px;font-weight:800;color:#fff;letter-spacing:-0.5px;}
+.page-subtitle{font-size:11px;color:#64748b;margin-top:4px;}
+.as-of{font-size:10px;color:#32EACB;font-weight:600;}
+.kpi-row{display:flex;gap:12px;margin-bottom:20px;}
+.kpi{flex:1;background:#0d1525;border:1px solid #1e3a5f;border-radius:10px;padding:14px 18px;}
+.kpi-lbl{font-size:10px;color:#64748b;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;}
+.kpi-val{font-size:26px;font-weight:900;color:#fff;margin-top:4px;line-height:1;}
+.kpi-sub{font-size:10px;color:#94a3b8;margin-top:3px;}
+.charts-row{display:grid;grid-template-columns:1fr 2fr;gap:16px;margin-bottom:20px;}
+.chart-card{background:#0d1525;border:1px solid #1e3a5f;border-radius:12px;padding:16px;}
+.chart-title{font-size:12px;font-weight:800;color:#fff;margin-bottom:10px;}
+.tabs-wrap{background:#0d1525;border:1px solid #1e3a5f;border-radius:12px;overflow:hidden;}
+.tab-nav{display:flex;border-bottom:1px solid #1e3a5f;background:#060d1a;}
+.tab-btn{flex:1;padding:12px 8px;font-size:11px;font-weight:700;color:#64748b;background:none;border:none;cursor:pointer;font-family:inherit;transition:all 0.2s;border-bottom:3px solid transparent;}
+.tab-btn.active{color:#32EACB;border-bottom-color:#32EACB;background:#0d1525;}
+.tab-btn:hover{color:#94a3b8;}
+.tab-pane{display:none;}
+.tab-pane.active{display:block;}
+/* Scroll container — show top 10 initially, scroll for rest */
+.table-scroll{max-height:480px;overflow-y:auto;}
+.table-scroll::-webkit-scrollbar{width:6px;}
+.table-scroll::-webkit-scrollbar-track{background:#0a0f1e;}
+.table-scroll::-webkit-scrollbar-thumb{background:#1e3a5f;border-radius:3px;}
+.table-scroll::-webkit-scrollbar-thumb:hover{background:#32EACB;}
+/* Top 10 marker */
+.top10-divider{position:sticky;top:0;z-index:4;}
+.scroll-hint{text-align:center;padding:8px;font-size:10px;color:#334155;background:#0a0f1e;border-top:1px dashed #1e3a5f;font-family:'Montserrat',sans-serif;}
+.footer{text-align:center;margin-top:20px;padding:12px;font-size:10px;color:#334155;}
+.back-link{color:#32EACB;text-decoration:none;font-weight:700;}
 </style>
 </head>
 <body>
 <div class="app">
-  <!-- Header -->
   <div class="page-header">
     <div>
       <div class="page-title">🏗️ MCH-SCF-CAPEX — Budget Overview</div>
@@ -67,24 +67,21 @@ body { background:#0a0f1e; font-family:'Be Vietnam Pro','Montserrat',sans-serif;
     </div>
     <div class="as-of">As of T5/2026 · 455 Projects in MUF</div>
   </div>
-  <!-- KPI Row -->
+
   <div class="kpi-row">
-    <div class="kpi"><div class="kpi-lbl">Total AP</div><div class="kpi-val teal">1,387</div><div class="kpi-sub">Tỷ VND (Carried+New)</div></div>
-    <div class="kpi"><div class="kpi-lbl">Total MUF Budget</div><div class="kpi-val teal">1,504</div><div class="kpi-sub">Tỷ VND · 455 projects</div></div>
-    <div class="kpi"><div class="kpi-lbl">Total Approved</div><div class="kpi-val yellow">989</div><div class="kpi-sub">Tỷ VND (Carried+In+Out)</div></div>
-    <div class="kpi"><div class="kpi-lbl">Unapproved</div><div class="kpi-val" style="color:#E0374A">514</div><div class="kpi-sub">Tỷ VND (In+Out AP)</div></div>
+    <div class="kpi"><div class="kpi-lbl">Total AP</div><div class="kpi-val" style="color:#32EACB">1,387</div><div class="kpi-sub">Tỷ VND (Carried + New)</div></div>
+    <div class="kpi"><div class="kpi-lbl">Total MUF Budget</div><div class="kpi-val" style="color:#32EACB">1,504</div><div class="kpi-sub">Tỷ VND · 455 projects</div></div>
+    <div class="kpi"><div class="kpi-lbl">Total Approved</div><div class="kpi-val" style="color:#e8a020">989</div><div class="kpi-sub">Tỷ VND (Carried + In + Out)</div></div>
+    <div class="kpi"><div class="kpi-lbl">Unapproved</div><div class="kpi-val" style="color:#E0374A">514</div><div class="kpi-sub">Tỷ VND (In + Out AP)</div></div>
   </div>
-  <!-- Charts -->
+
   <div class="charts-row">
-    <!-- YoY -->
     <div class="chart-card">
       <div class="chart-title">📈 Budget YoY — Carried vs New (Tỷ VND)</div>
       <canvas id="yoyChart" width="380" height="280"></canvas>
     </div>
-    <!-- Waterfall -->
     <div class="chart-card" style="position:relative">
       <div class="chart-title">📊 Waterfall — T5/2026</div>
-      <!-- Float boxes -->
       <div style="position:absolute;top:10px;left:30px;border:2px solid #e8a020;border-radius:40px;background:#0d1525;padding:5px 12px;text-align:center;z-index:10;">
         <div style="font-size:24px;font-weight:900;color:#32EACB">1,387</div>
         <div style="font-size:9px;font-weight:700;color:#fff">Total AP</div>
@@ -97,18 +94,21 @@ body { background:#0a0f1e; font-family:'Be Vietnam Pro','Montserrat',sans-serif;
       <canvas id="wfChart" width="760" height="280" style="margin-top:30px"></canvas>
     </div>
   </div>
-  <!-- Tabs -->
+
   <div class="tabs-wrap">
     <div class="tab-nav">
-      <button class="tab-btn active" onclick="showTab(0)">✅ Top Approved (131 projects)</button>
-      <button class="tab-btn" onclick="showTab(1)">⏳ Unapproved In AP (231 projects)</button>
-      <button class="tab-btn" onclick="showTab(2)">⚠️ Unapproved Out AP (6 projects)</button>
+      <button class="tab-btn active" onclick="showTab(0)">✅ Approved (131 dự án)</button>
+      <button class="tab-btn" onclick="showTab(1)">⏳ Unapproved In AP (231 dự án)</button>
+      <button class="tab-btn" onclick="showTab(2)">⚠️ Unapproved Out AP (6 dự án)</button>
     </div>
+
+    <!-- Tab 1: Approved -->
     <div class="tab-pane active" id="tab0">
-      <div style="background:#0a0f1e;font-family:'Montserrat',sans-serif;">
-      <table><colgroup><col style="width:32px"><col style="width:54px"><col><col style="width:90px"><col style="width:90px"><col style="width:90px"><col style="width:90px"></colgroup>
-      <thead><tr><th>#</th><th>Site</th><th>Project Name</th><th class="num">Budget</th><th class="num">In AP</th><th class="num">Out AP</th><th class="num">Acc.CIP</th></tr></thead>
-      <tbody><tr>
+      <div class="table-scroll">
+        <table>
+          <colgroup><col class="c-rank"><col class="c-site"><col class="c-name"><col class="c-n"><col class="c-n"><col class="c-n"><col class="c-n"></colgroup>
+          <thead><tr><th>#</th><th>Site</th><th>Project Name</th><th class="num">Budget</th><th class="num">In AP</th><th class="num">Out AP</th><th class="num">Acc.CIP</th></tr></thead>
+          <tbody><tr style="background:#0f1f3a">
           <td>1</td>
           <td><span class="site-badge">MSI</span></td>
           <td><div class="proj-name">ĐẦU TƯ THIẾT BỊ VÀ CẢI TẠO NHÀ XƯỞNG SX VIÊN SẤY THĂNG HOA QXCA TẠI MSI</div></td>
@@ -116,7 +116,7 @@ body { background:#0a0f1e; font-family:'Be Vietnam Pro','Montserrat',sans-serif;
           <td class="num" style="color:#60a5fa">0.0</td>
           <td class="num" style="color:#f59e0b">89.6</td>
           <td class="num" style="color:#94a3b8">—</td>
-        </tr><tr>
+        </tr><tr style="background:#0f1f3a">
           <td>2</td>
           <td><span class="site-badge">MSC</span></td>
           <td><div class="proj-name">TRIỂN KHAI RE-IMPLEMENTATION ORACLE ERP CHO MCH, MML, MSN</div></td>
@@ -124,7 +124,7 @@ body { background:#0a0f1e; font-family:'Be Vietnam Pro','Montserrat',sans-serif;
           <td class="num" style="color:#60a5fa">61.6</td>
           <td class="num" style="color:#f59e0b">0.0</td>
           <td class="num" style="color:#94a3b8">—</td>
-        </tr><tr>
+        </tr><tr style="background:#0f1f3a">
           <td>3</td>
           <td><span class="site-badge">MSC</span></td>
           <td><div class="proj-name">ĐẦU TƯ TRIỂN KHAI ỨNG DỤNG RETAIL SUPREME - PHASE 2</div></td>
@@ -132,7 +132,7 @@ body { background:#0a0f1e; font-family:'Be Vietnam Pro','Montserrat',sans-serif;
           <td class="num" style="color:#60a5fa">0.0</td>
           <td class="num" style="color:#f59e0b">54.6</td>
           <td class="num" style="color:#94a3b8">—</td>
-        </tr><tr>
+        </tr><tr style="background:#0f1f3a">
           <td>4</td>
           <td><span class="site-badge">MHD</span></td>
           <td><div class="proj-name">ĐẦU TƯ MÁY ĐÓNG GÓI MÌ OMORI & MÁY ĐÓNG THÙNG CARTONER LINE 8 - MHD</div></td>
@@ -140,7 +140,7 @@ body { background:#0a0f1e; font-family:'Be Vietnam Pro','Montserrat',sans-serif;
           <td class="num" style="color:#60a5fa">19.5</td>
           <td class="num" style="color:#f59e0b">0.0</td>
           <td class="num" style="color:#94a3b8">—</td>
-        </tr><tr>
+        </tr><tr style="background:#0f1f3a">
           <td>5</td>
           <td><span class="site-badge">MSC</span></td>
           <td><div class="proj-name">XÂY DỰNG HỆ THỐNG ROBOT E2E MCH</div></td>
@@ -148,7 +148,7 @@ body { background:#0a0f1e; font-family:'Be Vietnam Pro','Montserrat',sans-serif;
           <td class="num" style="color:#60a5fa">0.0</td>
           <td class="num" style="color:#f59e0b">18.0</td>
           <td class="num" style="color:#94a3b8">—</td>
-        </tr><tr>
+        </tr><tr style="background:#0f1f3a">
           <td>6</td>
           <td><span class="site-badge">MSI</span></td>
           <td><div class="proj-name">ĐẦU TƯ THIẾT BỊ TĂNG CÔNG SUẤT SẢN XUẤT HẠT NÊM NGỌT THANH TẠI MSI</div></td>
@@ -156,7 +156,7 @@ body { background:#0a0f1e; font-family:'Be Vietnam Pro','Montserrat',sans-serif;
           <td class="num" style="color:#60a5fa">0.0</td>
           <td class="num" style="color:#f59e0b">16.7</td>
           <td class="num" style="color:#94a3b8">—</td>
-        </tr><tr>
+        </tr><tr style="background:#0f1f3a">
           <td>7</td>
           <td><span class="site-badge">VHC</span></td>
           <td><div class="proj-name">ĐẦU TƯ XÂY DỰNG MỞ RỘNG NMVH TUÂN THỦ QĐ CHỦ TRƯƠNG ĐẦU TƯ – GĐ 2</div></td>
@@ -164,7 +164,7 @@ body { background:#0a0f1e; font-family:'Be Vietnam Pro','Montserrat',sans-serif;
           <td class="num" style="color:#60a5fa">0.0</td>
           <td class="num" style="color:#f59e0b">13.1</td>
           <td class="num" style="color:#94a3b8">—</td>
-        </tr><tr>
+        </tr><tr style="background:#0f1f3a">
           <td>8</td>
           <td><span class="site-badge">VCF</span></td>
           <td><div class="proj-name">TỰ ĐỘNG HÓA TRÍCH LY DÂY CHUYỀN SẢN XUẤT CÀ PHÊ HÒA TAN 2</div></td>
@@ -172,7 +172,7 @@ body { background:#0a0f1e; font-family:'Be Vietnam Pro','Montserrat',sans-serif;
           <td class="num" style="color:#60a5fa">0.0</td>
           <td class="num" style="color:#f59e0b">13.0</td>
           <td class="num" style="color:#94a3b8">—</td>
-        </tr><tr>
+        </tr><tr style="background:#0f1f3a">
           <td>9</td>
           <td><span class="site-badge">MHG</span></td>
           <td><div class="proj-name">DỰ ÁN ĐẦU TƯ 10 BỒN 100M3 CHỨA NƯỚC MẮM CỐT CHO MHG</div></td>
@@ -180,7 +180,7 @@ body { background:#0a0f1e; font-family:'Be Vietnam Pro','Montserrat',sans-serif;
           <td class="num" style="color:#60a5fa">0.0</td>
           <td class="num" style="color:#f59e0b">12.2</td>
           <td class="num" style="color:#94a3b8">—</td>
-        </tr><tr>
+        </tr><tr style="background:#0f1f3a">
           <td>10</td>
           <td><span class="site-badge">MSI</span></td>
           <td><div class="proj-name">ĐẦU TƯ BỘ KHUÔN ÉP PHÔI CỔ DẦU 18GR TRÊN MÁY ÉP PHÔI HUSKY MSI</div></td>
@@ -188,146 +188,2458 @@ body { background:#0a0f1e; font-family:'Be Vietnam Pro','Montserrat',sans-serif;
           <td class="num" style="color:#60a5fa">0.0</td>
           <td class="num" style="color:#f59e0b">11.7</td>
           <td class="num" style="color:#94a3b8">—</td>
-        </tr><tr style="background:#1a1f35">
-      <td colspan="3" style="font-weight:800;color:#94a3b8;font-size:10px">Others (121 projects)</td>
-      <td class="num" style="color:#32EACB">188.6</td>
-      <td class="num" style="color:#60a5fa">94.2</td>
-      <td class="num" style="color:#f59e0b">94.4</td>
-      <td class="num" style="color:#94a3b8">—</td>
-    </tr>
-    <tr style="background:#1e3a5f;border-top:2px solid #32EACB">
-      <td colspan="3" style="font-weight:900;color:#fff">TOTAL (131 projects)</td>
+        </tr><tr>
+          <td>11</td>
+          <td><span class="site-badge">MHD</span></td>
+          <td><div class="proj-name">ĐẦU TƯ MÁY ĐÓNG THÙNG CARTONER CHO LINE 2 & LINE 4 - MHD</div></td>
+          <td class="num" style="color:#32EACB">11.5</td>
+          <td class="num" style="color:#60a5fa">0.0</td>
+          <td class="num" style="color:#f59e0b">11.5</td>
+          <td class="num" style="color:#94a3b8">—</td>
+        </tr><tr>
+          <td>12</td>
+          <td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">TỰ ĐỘNG HÓA EOL DÂY CHUYỀN FISH SAUCE THỦY TINH MSI</div></td>
+          <td class="num" style="color:#32EACB">9.5</td>
+          <td class="num" style="color:#60a5fa">9.5</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+          <td class="num" style="color:#94a3b8">—</td>
+        </tr><tr>
+          <td>13</td>
+          <td><span class="site-badge">NET</span></td>
+          <td><div class="proj-name">ĐẦU TƯ 02 BỒN BUFFER 50 M3 VÀ TỐI ƯU HÓA HỆ THỐNG ĐƯỜNG ỐNG BUFFER, MIXER</div></td>
+          <td class="num" style="color:#32EACB">9.5</td>
+          <td class="num" style="color:#60a5fa">6.0</td>
+          <td class="num" style="color:#f59e0b">3.5</td>
+          <td class="num" style="color:#94a3b8">—</td>
+        </tr><tr>
+          <td>14</td>
+          <td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">CẢI TẠO NHÀ XƯỞNG F1, F3 & HOÀN CHỈNH HỒ SƠ PCCC F3</div></td>
+          <td class="num" style="color:#32EACB">9.3</td>
+          <td class="num" style="color:#60a5fa">9.3</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+          <td class="num" style="color:#94a3b8">—</td>
+        </tr><tr>
+          <td>15</td>
+          <td><span class="site-badge">VCF</span></td>
+          <td><div class="proj-name">ĐẦU TƯ LẮP PIN NĂNG LƯỢNG MẶT TRỜI ÁP MÁI TẠI NHÀ MÁY VCF LONG THÀNH</div></td>
+          <td class="num" style="color:#32EACB">9.0</td>
+          <td class="num" style="color:#60a5fa">0.0</td>
+          <td class="num" style="color:#f59e0b">9.0</td>
+          <td class="num" style="color:#94a3b8">—</td>
+        </tr><tr>
+          <td>16</td>
+          <td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">BỔ SUNG MÁY NÉN KHÍ VÀ NÂNG CẤP HỆ THỐNG KHÍ NÉN F5 - MSI</div></td>
+          <td class="num" style="color:#32EACB">9.0</td>
+          <td class="num" style="color:#60a5fa">5.8</td>
+          <td class="num" style="color:#f59e0b">3.2</td>
+          <td class="num" style="color:#94a3b8">—</td>
+        </tr><tr>
+          <td>17</td>
+          <td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">ĐẦU TƯ HỆ THỐNG BỒN CHỨA & ĐỊNH LƯỢNG BTP VÀO NỒI NẤU GIA VỊ F2</div></td>
+          <td class="num" style="color:#32EACB">7.4</td>
+          <td class="num" style="color:#60a5fa">7.0</td>
+          <td class="num" style="color:#f59e0b">0.4</td>
+          <td class="num" style="color:#94a3b8">—</td>
+        </tr><tr>
+          <td>18</td>
+          <td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">TĂNG CÔNG SUẤT COOKING SAUCE CHO DỰ ÁN DROP & FORGET</div></td>
+          <td class="num" style="color:#32EACB">7.3</td>
+          <td class="num" style="color:#60a5fa">0.0</td>
+          <td class="num" style="color:#f59e0b">7.3</td>
+          <td class="num" style="color:#94a3b8">—</td>
+        </tr><tr>
+          <td>19</td>
+          <td><span class="site-badge">MMB</span></td>
+          <td><div class="proj-name">ĐẦU TƯ MÁY DÒ KIM LOẠI XRAY CHO LINE MÌ SỐ 1, 2, 5, 7, 8 VÀ LINE PHỞ 1</div></td>
+          <td class="num" style="color:#32EACB">7.2</td>
+          <td class="num" style="color:#60a5fa">6.4</td>
+          <td class="num" style="color:#f59e0b">0.9</td>
+          <td class="num" style="color:#94a3b8">—</td>
+        </tr><tr>
+          <td>20</td>
+          <td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">ĐẠI TU DÂY CHUYỀN FISH SAUCE 03 DI DỜI TỪ NHÀ MÁY NPQ VỀ NHÀ MÁY MSI</div></td>
+          <td class="num" style="color:#32EACB">6.6</td>
+          <td class="num" style="color:#60a5fa">0.0</td>
+          <td class="num" style="color:#f59e0b">6.6</td>
+          <td class="num" style="color:#94a3b8">—</td>
+        </tr><tr>
+          <td>21</td>
+          <td><span class="site-badge">VHC</span></td>
+          <td><div class="proj-name">ĐẦU TƯ MỞ RỘNG XÂY DỰNG HẠ TẦNG PHỤC VỤ SẢN XUẤT NƯỚC KHOÁNG</div></td>
+          <td class="num" style="color:#32EACB">5.7</td>
+          <td class="num" style="color:#60a5fa">5.7</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+          <td class="num" style="color:#94a3b8">—</td>
+        </tr><tr>
+          <td>22</td>
+          <td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">CẢI TẠO NHÀ XƯỞNG VÀ THIẾT BỊ PHỞ MSI PHỤC VỤ ĐÁNH GIÁ BRC</div></td>
+          <td class="num" style="color:#32EACB">5.1</td>
+          <td class="num" style="color:#60a5fa">0.0</td>
+          <td class="num" style="color:#f59e0b">5.1</td>
+          <td class="num" style="color:#94a3b8">—</td>
+        </tr><tr>
+          <td>23</td>
+          <td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">CẢI TẠO CƠ SỞ HẠ TẦNG NHÀ XƯỞNG MSI</div></td>
+          <td class="num" style="color:#32EACB">3.9</td>
+          <td class="num" style="color:#60a5fa">0.8</td>
+          <td class="num" style="color:#f59e0b">3.2</td>
+          <td class="num" style="color:#94a3b8">—</td>
+        </tr><tr>
+          <td>24</td>
+          <td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">THAY THẾ THIẾT BỊ HƯ HỎNG, XUỐNG CẤP CỦA SOYA SAUCE, HVP NĂM 2026</div></td>
+          <td class="num" style="color:#32EACB">3.3</td>
+          <td class="num" style="color:#60a5fa">3.3</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+          <td class="num" style="color:#94a3b8">—</td>
+        </tr><tr>
+          <td>25</td>
+          <td><span class="site-badge">MSC</span></td>
+          <td><div class="proj-name">ĐẦU TƯ TÍCH HỢP AI CHẤM ĐIỂM TRƯNG BÀY VÀO MTS</div></td>
+          <td class="num" style="color:#32EACB">2.8</td>
+          <td class="num" style="color:#60a5fa">0.0</td>
+          <td class="num" style="color:#f59e0b">2.8</td>
+          <td class="num" style="color:#94a3b8">—</td>
+        </tr><tr>
+          <td>26</td>
+          <td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">THAY THẾ THIẾT BỊ HƯ HỎNG KHU CHẾ BIẾN CÁC LINE FISH SAUCE MSI 2026</div></td>
+          <td class="num" style="color:#32EACB">2.8</td>
+          <td class="num" style="color:#60a5fa">1.4</td>
+          <td class="num" style="color:#f59e0b">1.4</td>
+          <td class="num" style="color:#94a3b8">—</td>
+        </tr><tr>
+          <td>27</td>
+          <td><span class="site-badge">VCF</span></td>
+          <td><div class="proj-name">SỬA CHỮA MÁY LY TÂM 1 - DÂY CHUYỀN SẢN XUẤT CÀ PHÊ HÒA TAN 3</div></td>
+          <td class="num" style="color:#32EACB">2.6</td>
+          <td class="num" style="color:#60a5fa">0.0</td>
+          <td class="num" style="color:#f59e0b">2.6</td>
+          <td class="num" style="color:#94a3b8">—</td>
+        </tr><tr>
+          <td>28</td>
+          <td><span class="site-badge">HGC</span></td>
+          <td><div class="proj-name">SỬA CHỮA NỀN BÊ TÔNG VÀ THAY MỚI CỬA NHÀ XƯỞNG HGC</div></td>
+          <td class="num" style="color:#32EACB">2.5</td>
+          <td class="num" style="color:#60a5fa">2.5</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+          <td class="num" style="color:#94a3b8">—</td>
+        </tr><tr>
+          <td>29</td>
+          <td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">MUA MỚI MNK THẤP ÁP HITACHI THAY THẾ CÁC MÁY CŨ ĐÃ XUỐNG CẤP, HƯ HỎNG</div></td>
+          <td class="num" style="color:#32EACB">2.5</td>
+          <td class="num" style="color:#60a5fa">2.0</td>
+          <td class="num" style="color:#f59e0b">0.5</td>
+          <td class="num" style="color:#94a3b8">—</td>
+        </tr><tr>
+          <td>30</td>
+          <td><span class="site-badge">MSC</span></td>
+          <td><div class="proj-name">KẾT NỐI HỆ THỐNG CCTV TỪ CÁC NHÀ MÁY VỀ TRUNG TÂM CCTV PHASE 2</div></td>
+          <td class="num" style="color:#32EACB">2.5</td>
+          <td class="num" style="color:#60a5fa">0.0</td>
+          <td class="num" style="color:#f59e0b">2.5</td>
+          <td class="num" style="color:#94a3b8">—</td>
+        </tr><tr>
+          <td>31</td>
+          <td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">ĐẦU TƯ MÁY ĐÓNG GÓI HÚT CHÂN KHÔNG CẢI CHUA TỰ ĐỘNG MSI</div></td>
+          <td class="num" style="color:#32EACB">2.2</td>
+          <td class="num" style="color:#60a5fa">1.5</td>
+          <td class="num" style="color:#f59e0b">0.7</td>
+          <td class="num" style="color:#94a3b8">—</td>
+        </tr><tr>
+          <td>32</td>
+          <td><span class="site-badge">MPQ</span></td>
+          <td><div class="proj-name">CH���NG THẤM BỂ CHƯỢP BÊ TÔNG NHÀ B2,3,4,5 BẰNG COMPOSITE - MPQ (GĐ 4)</div></td>
+          <td class="num" style="color:#32EACB">2.1</td>
+          <td class="num" style="color:#60a5fa">2.1</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+          <td class="num" style="color:#94a3b8">—</td>
+        </tr><tr>
+          <td>33</td>
+          <td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">TRIỂN KHAI ACTIVE QR CODE CÁC DÂY CHUYỀN SEASONING NHÀ MÁY MSI</div></td>
+          <td class="num" style="color:#32EACB">2.1</td>
+          <td class="num" style="color:#60a5fa">0.0</td>
+          <td class="num" style="color:#f59e0b">2.1</td>
+          <td class="num" style="color:#94a3b8">—</td>
+        </tr><tr>
+          <td>34</td>
+          <td><span class="site-badge">VCF</span></td>
+          <td><div class="proj-name">ĐẦU TƯ 02 COBOT BỐC THÙNG LÊN PALLET TẦNG 01</div></td>
+          <td class="num" style="color:#32EACB">1.9</td>
+          <td class="num" style="color:#60a5fa">0.0</td>
+          <td class="num" style="color:#f59e0b">1.9</td>
+          <td class="num" style="color:#94a3b8">—</td>
+        </tr><tr>
+          <td>35</td>
+          <td><span class="site-badge">QNW</span></td>
+          <td><div class="proj-name">ĐẦU TƯ THAY THẾ MÁY NÉN KHÍ TRỤC VÍT KHÔNG DẦU 55KW - QHP</div></td>
+          <td class="num" style="color:#32EACB">1.6</td>
+          <td class="num" style="color:#60a5fa">1.6</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+          <td class="num" style="color:#94a3b8">—</td>
+        </tr><tr>
+          <td>36</td>
+          <td><span class="site-badge">MHD</span></td>
+          <td><div class="proj-name">MUA DỰ PHÒNG 02 BỒN TRAO ĐỔI NHIỆT SPIRAL TẠI MHD - NĂM 2026</div></td>
+          <td class="num" style="color:#32EACB">1.6</td>
+          <td class="num" style="color:#60a5fa">1.6</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+          <td class="num" style="color:#94a3b8">—</td>
+        </tr><tr>
+          <td>37</td>
+          <td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">ĐẦU TƯ IoT HỆ THỐNG XỬ LÝ NƯỚC THẢI - MSI</div></td>
+          <td class="num" style="color:#32EACB">1.5</td>
+          <td class="num" style="color:#60a5fa">0.0</td>
+          <td class="num" style="color:#f59e0b">1.5</td>
+          <td class="num" style="color:#94a3b8">—</td>
+        </tr><tr>
+          <td>38</td>
+          <td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">ĐẦU TƯ THIẾT BỊ SẢN XUẤT NƯỚC MẮM NAM NGƯ TINH TẾ TẠI MSI</div></td>
+          <td class="num" style="color:#32EACB">1.5</td>
+          <td class="num" style="color:#60a5fa">0.0</td>
+          <td class="num" style="color:#f59e0b">1.5</td>
+          <td class="num" style="color:#94a3b8">—</td>
+        </tr><tr>
+          <td>39</td>
+          <td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">ĐẦU TƯ MÁY CẤP NĨA TỰ ĐỘNG MÌ TÔ NẮP SEAL MSI</div></td>
+          <td class="num" style="color:#32EACB">1.4</td>
+          <td class="num" style="color:#60a5fa">1.4</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+          <td class="num" style="color:#94a3b8">—</td>
+        </tr><tr>
+          <td>40</td>
+          <td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">ĐẦU TƯ THIẾT BỊ ĐÓNG GÓI VÀ CẢI TẠO LINE MÌ LỚN MSI ĐỂ SX KKM SNACKING</div></td>
+          <td class="num" style="color:#32EACB">1.4</td>
+          <td class="num" style="color:#60a5fa">0.0</td>
+          <td class="num" style="color:#f59e0b">1.4</td>
+          <td class="num" style="color:#94a3b8">—</td>
+        </tr><tr>
+          <td>41</td>
+          <td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">THAY THẾ, NÂNG CẤP CÁC BƠM CẤP BTP TƯƠNG ỚT BỊ HƯ HỎNG</div></td>
+          <td class="num" style="color:#32EACB">1.4</td>
+          <td class="num" style="color:#60a5fa">1.4</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+          <td class="num" style="color:#94a3b8">—</td>
+        </tr><tr>
+          <td>42</td>
+          <td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">ĐẦU TƯ THAY THẾ MỚI BỒN TẠO ẨM MÌ F1 - MSI</div></td>
+          <td class="num" style="color:#32EACB">1.3</td>
+          <td class="num" style="color:#60a5fa">0.8</td>
+          <td class="num" style="color:#f59e0b">0.6</td>
+          <td class="num" style="color:#94a3b8">—</td>
+        </tr><tr>
+          <td>43</td>
+          <td><span class="site-badge">MHD</span></td>
+          <td><div class="proj-name">THAY XÍCH TY LƯỚI SS316 BUỒNG HẤP LINE 1 2 7 8 MHD</div></td>
+          <td class="num" style="color:#32EACB">1.2</td>
+          <td class="num" style="color:#60a5fa">1.2</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+          <td class="num" style="color:#94a3b8">—</td>
+        </tr><tr>
+          <td>44</td>
+          <td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">ĐẦU TƯ 2 COBOT CHẤT THÙNG LÊN PALLET MÌ TÔ MSI</div></td>
+          <td class="num" style="color:#32EACB">1.2</td>
+          <td class="num" style="color:#60a5fa">0.0</td>
+          <td class="num" style="color:#f59e0b">1.2</td>
+          <td class="num" style="color:#94a3b8">—</td>
+        </tr><tr>
+          <td>45</td>
+          <td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">CẢI TẠO THIẾT BỊ ĐIỆN VÀ ĐO LƯỜNG LƯU LƯỢNG KHU CHẾ BIẾN HVP MSI</div></td>
+          <td class="num" style="color:#32EACB">1.2</td>
+          <td class="num" style="color:#60a5fa">0.9</td>
+          <td class="num" style="color:#f59e0b">0.2</td>
+          <td class="num" style="color:#94a3b8">—</td>
+        </tr><tr>
+          <td>46</td>
+          <td><span class="site-badge">MBB</span></td>
+          <td><div class="proj-name">CẢI TẠO SỬA CHỮA KHO DC NGHỆ AN</div></td>
+          <td class="num" style="color:#32EACB">1.1</td>
+          <td class="num" style="color:#60a5fa">0.0</td>
+          <td class="num" style="color:#f59e0b">1.1</td>
+          <td class="num" style="color:#94a3b8">—</td>
+        </tr><tr>
+          <td>47</td>
+          <td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">THAY THẾ HỆ CALORIFE, QUẠT THỔI VÀ KHUNG ĐỠ MÁY TRỘN SIÊU TỐC 1 2 3 HẠT NÊM</div></td>
+          <td class="num" style="color:#32EACB">1.1</td>
+          <td class="num" style="color:#60a5fa">0.8</td>
+          <td class="num" style="color:#f59e0b">0.2</td>
+          <td class="num" style="color:#94a3b8">—</td>
+        </tr><tr>
+          <td>48</td>
+          <td><span class="site-badge">HGC</span></td>
+          <td><div class="proj-name">CẢI TẠO CHÂN CỘT NHÀ XƯỞNG HGC</div></td>
+          <td class="num" style="color:#32EACB">1.0</td>
+          <td class="num" style="color:#60a5fa">1.0</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+          <td class="num" style="color:#94a3b8">—</td>
+        </tr><tr>
+          <td>49</td>
+          <td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">CẢI TẠO HỆ BƠM ĐƯỜNG ỐNG COOLING KHÍ NÉN VÀ COOLING TƯƠNG ỚT MSI</div></td>
+          <td class="num" style="color:#32EACB">1.0</td>
+          <td class="num" style="color:#60a5fa">0.8</td>
+          <td class="num" style="color:#f59e0b">0.2</td>
+          <td class="num" style="color:#94a3b8">—</td>
+        </tr><tr>
+          <td>50</td>
+          <td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">ĐẦU TƯ HỆ THỐNG HÚT BỤI KHU HÒA TAN PHỤ GIA TƯƠNG ỚT</div></td>
+          <td class="num" style="color:#32EACB">1.0</td>
+          <td class="num" style="color:#60a5fa">0.0</td>
+          <td class="num" style="color:#f59e0b">1.0</td>
+          <td class="num" style="color:#94a3b8">—</td>
+        </tr><tr>
+          <td>51</td>
+          <td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">ĐẦU TƯ BỔ SUNG THIẾT BỊ ĐỂ SX PHỞ 3 MÀU TRÊN LINE PHỞ MSI</div></td>
+          <td class="num" style="color:#32EACB">1.0</td>
+          <td class="num" style="color:#60a5fa">0.0</td>
+          <td class="num" style="color:#f59e0b">1.0</td>
+          <td class="num" style="color:#94a3b8">—</td>
+        </tr><tr>
+          <td>52</td>
+          <td><span class="site-badge">VHC</span></td>
+          <td><div class="proj-name">ĐIỀU CHỈNH VÀ TÍCH HỢP 02 GIẤY PHÉP MÔI TRƯỜNG NHÀ MÁY VĨNH HẢO</div></td>
+          <td class="num" style="color:#32EACB">1.0</td>
+          <td class="num" style="color:#60a5fa">1.0</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+          <td class="num" style="color:#94a3b8">—</td>
+        </tr><tr>
+          <td>53</td>
+          <td><span class="site-badge">MSC</span></td>
+          <td><div class="proj-name">ĐẦU TƯ HỆ THỐNG TRÍCH LY TRÀ QUY MÔ PILOT</div></td>
+          <td class="num" style="color:#32EACB">1.0</td>
+          <td class="num" style="color:#60a5fa">1.0</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+          <td class="num" style="color:#94a3b8">—</td>
+        </tr><tr>
+          <td>54</td>
+          <td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">ĐẦU TƯ CÁC HẠNG MỤC AN TOÀN CHO LINE MÌ - PHỞ MSI</div></td>
+          <td class="num" style="color:#32EACB">1.0</td>
+          <td class="num" style="color:#60a5fa">0.0</td>
+          <td class="num" style="color:#f59e0b">1.0</td>
+          <td class="num" style="color:#94a3b8">—</td>
+        </tr><tr>
+          <td>55</td>
+          <td><span class="site-badge">VHC</span></td>
+          <td><div class="proj-name">ĐẦU TƯ CỤM MÁY THỔI BÌNH 20L - LINE PET NMVH</div></td>
+          <td class="num" style="color:#32EACB">1.0</td>
+          <td class="num" style="color:#60a5fa">0.0</td>
+          <td class="num" style="color:#f59e0b">1.0</td>
+          <td class="num" style="color:#94a3b8">—</td>
+        </tr><tr>
+          <td>56</td>
+          <td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">ĐẦU TƯ CÁC THIẾT BỊ ĐO KIỂM HỆ THỐNG UTILITY CHO KHỐI CoE</div></td>
+          <td class="num" style="color:#32EACB">0.9</td>
+          <td class="num" style="color:#60a5fa">0.9</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+          <td class="num" style="color:#94a3b8">—</td>
+        </tr><tr>
+          <td>57</td>
+          <td><span class="site-badge">VCF</span></td>
+          <td><div class="proj-name">ĐẦU TƯ MÁY MÓC THIẾT BỊ KÍCH HOẠT CZCODE CHO SẢN PHẨM CÀ PHÊ XK NGA</div></td>
+          <td class="num" style="color:#32EACB">0.9</td>
+          <td class="num" style="color:#60a5fa">0.9</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+          <td class="num" style="color:#94a3b8">—</td>
+        </tr><tr>
+          <td>58</td>
+          <td><span class="site-badge">VCF</span></td>
+          <td><div class="proj-name">CẢI TẠO KHU XẢ BÃ NHÀ MÁY LONG THÀNH</div></td>
+          <td class="num" style="color:#32EACB">0.9</td>
+          <td class="num" style="color:#60a5fa">0.9</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+          <td class="num" style="color:#94a3b8">—</td>
+        </tr><tr>
+          <td>59</td>
+          <td><span class="site-badge">MMB</span></td>
+          <td><div class="proj-name">DỊCH VỤ HOÀN CÔNG VÀ SỞ HỮU CÔNG TRÌNH NHÀ MÁY MMB</div></td>
+          <td class="num" style="color:#32EACB">0.9</td>
+          <td class="num" style="color:#60a5fa">0.0</td>
+          <td class="num" style="color:#f59e0b">0.9</td>
+          <td class="num" style="color:#94a3b8">—</td>
+        </tr><tr>
+          <td>60</td>
+          <td><span class="site-badge">MBB</span></td>
+          <td><div class="proj-name">TỜ TRÌNH NGÂN SÁCH DỊCH VỤ HOÀN CÔNG VÀ SỞ HỮU CÔNG TRÌNH NHÀ MÁY MBB</div></td>
+          <td class="num" style="color:#32EACB">0.9</td>
+          <td class="num" style="color:#60a5fa">0.0</td>
+          <td class="num" style="color:#f59e0b">0.9</td>
+          <td class="num" style="color:#94a3b8">—</td>
+        </tr><tr>
+          <td>61</td>
+          <td><span class="site-badge">VHC</span></td>
+          <td><div class="proj-name">ĐẦU TƯ ĐÈN UV THAY THẾ QUY TRÌNH XỬ LÝ NƯỚC BẰNG OZONE</div></td>
+          <td class="num" style="color:#32EACB">0.9</td>
+          <td class="num" style="color:#60a5fa">0.0</td>
+          <td class="num" style="color:#f59e0b">0.9</td>
+          <td class="num" style="color:#94a3b8">—</td>
+        </tr><tr>
+          <td>62</td>
+          <td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">THAY THẾ ĐƯỜNG ỐNG, VAN, KHỚP NỐI HƯ XUỐNG CẤP – SƠ CHẾ TƯƠNG ỚT</div></td>
+          <td class="num" style="color:#32EACB">0.9</td>
+          <td class="num" style="color:#60a5fa">0.9</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+          <td class="num" style="color:#94a3b8">—</td>
+        </tr><tr>
+          <td>63</td>
+          <td><span class="site-badge">MMB</span></td>
+          <td><div class="proj-name">GIẢM THỂ TÍCH BUỒNG HẤP LINE 1, 2, 3, 5, 6, 8 NHÀ MÁY MMB</div></td>
+          <td class="num" style="color:#32EACB">0.8</td>
+          <td class="num" style="color:#60a5fa">0.0</td>
+          <td class="num" style="color:#f59e0b">0.8</td>
+          <td class="num" style="color:#94a3b8">—</td>
+        </tr><tr>
+          <td>64</td>
+          <td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">ĐẦU TƯ HỆ NẠP NGUYÊN LIỆU NỒI NẤU GIA VỊ JANSON F2 MSI</div></td>
+          <td class="num" style="color:#32EACB">0.8</td>
+          <td class="num" style="color:#60a5fa">0.8</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+          <td class="num" style="color:#94a3b8">—</td>
+        </tr><tr>
+          <td>65</td>
+          <td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">ĐẦU TƯ CHANGE PARTS - DỰ ÁN THAY BAO BÌ NAM NGƯ CÁ CƠM TƯƠI 500ML</div></td>
+          <td class="num" style="color:#32EACB">0.8</td>
+          <td class="num" style="color:#60a5fa">0.0</td>
+          <td class="num" style="color:#f59e0b">0.8</td>
+          <td class="num" style="color:#94a3b8">—</td>
+        </tr><tr>
+          <td>66</td>
+          <td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">ĐẦU TƯ BƠM HÚT TỎI TỰ ĐỘNG TỪ MÁNG NGÂM Ủ - SƠ CHẾ TƯƠNG ỚT</div></td>
+          <td class="num" style="color:#32EACB">0.8</td>
+          <td class="num" style="color:#60a5fa">0.7</td>
+          <td class="num" style="color:#f59e0b">0.1</td>
+          <td class="num" style="color:#94a3b8">—</td>
+        </tr><tr>
+          <td>67</td>
+          <td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">THAY THẾ CẢM BIẾN QUAN TRẮC TSS, COD TRẠM XLNT - NHÀ MÁY MSI</div></td>
+          <td class="num" style="color:#32EACB">0.7</td>
+          <td class="num" style="color:#60a5fa">0.0</td>
+          <td class="num" style="color:#f59e0b">0.7</td>
+          <td class="num" style="color:#94a3b8">—</td>
+        </tr><tr>
+          <td>68</td>
+          <td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">ĐẦU TƯ MÁY RỬA XE THÙNG INOX TỰ ĐỘNG CHỨA NGUYÊN LIỆU TƯƠI F2 MSI</div></td>
+          <td class="num" style="color:#32EACB">0.7</td>
+          <td class="num" style="color:#60a5fa">0.7</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+          <td class="num" style="color:#94a3b8">—</td>
+        </tr><tr>
+          <td>69</td>
+          <td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">KIỂM NGHIỆM CÁC CHỈ TIÊU NUTRITION FACTS THEO THÔNG TƯ 292023 TT-BYT</div></td>
+          <td class="num" style="color:#32EACB">0.7</td>
+          <td class="num" style="color:#60a5fa">0.7</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+          <td class="num" style="color:#94a3b8">—</td>
+        </tr><tr>
+          <td>70</td>
+          <td><span class="site-badge">MHG</span></td>
+          <td><div class="proj-name">NÂNG CAO ĐIỀU KIỆN SẢN XUẤT NHẰM TUÂN THỦ TIÊU CHUẨN COSTCO & BRC</div></td>
+          <td class="num" style="color:#32EACB">0.7</td>
+          <td class="num" style="color:#60a5fa">0.0</td>
+          <td class="num" style="color:#f59e0b">0.7</td>
+          <td class="num" style="color:#94a3b8">—</td>
+        </tr><tr>
+          <td>71</td>
+          <td><span class="site-badge">MHG</span></td>
+          <td><div class="proj-name">ĐẦU TƯ PILOT 1 COBOT BỐC THÙNG LÊN PALLET CHO LINE MÌ SỐ 2 - MHG</div></td>
+          <td class="num" style="color:#32EACB">0.7</td>
+          <td class="num" style="color:#60a5fa">0.7</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+          <td class="num" style="color:#94a3b8">—</td>
+        </tr><tr>
+          <td>72</td>
+          <td><span class="site-badge">VHC</span></td>
+          <td><div class="proj-name">THAY THẾ CHI TIẾT THIẾT BỊ X-RAY MÁY CHECKMAT LINE KRONES</div></td>
+          <td class="num" style="color:#32EACB">0.7</td>
+          <td class="num" style="color:#60a5fa">0.4</td>
+          <td class="num" style="color:#f59e0b">0.3</td>
+          <td class="num" style="color:#94a3b8">—</td>
+        </tr><tr>
+          <td>73</td>
+          <td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">THAY THẾ LOADCELL HƯ HỎNG LINE TƯƠNG ỚT AUTO 3 MSI</div></td>
+          <td class="num" style="color:#32EACB">0.6</td>
+          <td class="num" style="color:#60a5fa">0.0</td>
+          <td class="num" style="color:#f59e0b">0.6</td>
+          <td class="num" style="color:#94a3b8">—</td>
+        </tr><tr>
+          <td>74</td>
+          <td><span class="site-badge">MHD</span></td>
+          <td><div class="proj-name">THAY GIÀN LẠNH PHÒNG TRỘN - TẠO HẠT, THAY ỐNG GIÓ PHÒNG NGHIỀN HẠT NÊM</div></td>
+          <td class="num" style="color:#32EACB">0.6</td>
+          <td class="num" style="color:#60a5fa">0.0</td>
+          <td class="num" style="color:#f59e0b">0.6</td>
+          <td class="num" style="color:#94a3b8">—</td>
+        </tr><tr>
+          <td>75</td>
+          <td><span class="site-badge">MSC</span></td>
+          <td><div class="proj-name">ĐẦU TƯ MÁY TRỘN NÊM TIÊU CHUẨN CHO PHÒNG THÍ NGHIỆM</div></td>
+          <td class="num" style="color:#32EACB">0.6</td>
+          <td class="num" style="color:#60a5fa">0.0</td>
+          <td class="num" style="color:#f59e0b">0.6</td>
+          <td class="num" style="color:#94a3b8">—</td>
+        </tr><tr>
+          <td>76</td>
+          <td><span class="site-badge">MSC</span></td>
+          <td><div class="proj-name">DỰ ÁN ĐẦU TƯ MÁY ĐO ĐỘ NHỚT</div></td>
+          <td class="num" style="color:#32EACB">0.6</td>
+          <td class="num" style="color:#60a5fa">0.6</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+          <td class="num" style="color:#94a3b8">—</td>
+        </tr><tr>
+          <td>77</td>
+          <td><span class="site-badge">VCF</span></td>
+          <td><div class="proj-name">ĐẦU TƯ THIẾT BỊ KIỂM NGHIỆM CHO PHÒNG LAB VCF – LONG THÀNH</div></td>
+          <td class="num" style="color:#32EACB">0.6</td>
+          <td class="num" style="color:#60a5fa">0.0</td>
+          <td class="num" style="color:#f59e0b">0.6</td>
+          <td class="num" style="color:#94a3b8">—</td>
+        </tr><tr>
+          <td>78</td>
+          <td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">THAY THẾ CÁC VAN NẠP STEAM HƠI VÀO NỒI NẤU CT1200 TƯƠNG ỚT</div></td>
+          <td class="num" style="color:#32EACB">0.6</td>
+          <td class="num" style="color:#60a5fa">0.5</td>
+          <td class="num" style="color:#f59e0b">0.2</td>
+          <td class="num" style="color:#94a3b8">—</td>
+        </tr><tr>
+          <td>79</td>
+          <td><span class="site-badge">MMB</span></td>
+          <td><div class="proj-name">THAY THẾ THAN HOẠT TÍNH VÀ HẠT NHỰA LÀM MỀM NƯỚC HỆ RO - MMB</div></td>
+          <td class="num" style="color:#32EACB">0.6</td>
+          <td class="num" style="color:#60a5fa">0.4</td>
+          <td class="num" style="color:#f59e0b">0.1</td>
+          <td class="num" style="color:#94a3b8">—</td>
+        </tr><tr>
+          <td>80</td>
+          <td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">ĐẦU TƯ CẢI TẠO KHU VỰC PILOT FERMENTATION NHÀ O2 – R&D</div></td>
+          <td class="num" style="color:#32EACB">0.6</td>
+          <td class="num" style="color:#60a5fa">0.0</td>
+          <td class="num" style="color:#f59e0b">0.6</td>
+          <td class="num" style="color:#94a3b8">—</td>
+        </tr><tr>
+          <td>81</td>
+          <td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">ĐẦU TƯ COVER VÀ NÚT NHẤN AN TOÀN MĐG DẦU - NÊM RAU F2 MSI</div></td>
+          <td class="num" style="color:#32EACB">0.5</td>
+          <td class="num" style="color:#60a5fa">0.0</td>
+          <td class="num" style="color:#f59e0b">0.5</td>
+          <td class="num" style="color:#94a3b8">—</td>
+        </tr><tr>
+          <td>82</td>
+          <td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">THAY THẾ BỘ ĐIỀU KHIỂN PPC-R2X MÁY KISTER NƯỚC TƯƠNG - MSI</div></td>
+          <td class="num" style="color:#32EACB">0.5</td>
+          <td class="num" style="color:#60a5fa">0.0</td>
+          <td class="num" style="color:#f59e0b">0.5</td>
+          <td class="num" style="color:#94a3b8">—</td>
+        </tr><tr>
+          <td>83</td>
+          <td><span class="site-badge">MHD</span></td>
+          <td><div class="proj-name">THAY THẾ MÁY GIẶT – SẤY PHỤC VỤ GIẶT ĐỒ BẢO HỘ LAO ĐỘNG -  MHD</div></td>
+          <td class="num" style="color:#32EACB">0.5</td>
+          <td class="num" style="color:#60a5fa">0.5</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+          <td class="num" style="color:#94a3b8">—</td>
+        </tr><tr>
+          <td>84</td>
+          <td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">ĐẦU TƯ THAY THẾ CÁC TỦ ĐIỆN MẤT AN TOÀN XƯỞNG HẠT NÊM MSI</div></td>
+          <td class="num" style="color:#32EACB">0.5</td>
+          <td class="num" style="color:#60a5fa">0.5</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+          <td class="num" style="color:#94a3b8">—</td>
+        </tr><tr>
+          <td>85</td>
+          <td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">CẢI TẠO CƠ SỞ HẠ TẦNG PHỤC VỤ TĂNG CÔNG SUẤT SƠ CHẾ ỚT NĂM 2026</div></td>
+          <td class="num" style="color:#32EACB">0.5</td>
+          <td class="num" style="color:#60a5fa">0.0</td>
+          <td class="num" style="color:#f59e0b">0.5</td>
+          <td class="num" style="color:#94a3b8">—</td>
+        </tr><tr>
+          <td>86</td>
+          <td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">ĐẦU TƯ MÁY KHUẤY BỘT GIA VỊ CHUYÊN DỤNG NHÀ MÁY F2</div></td>
+          <td class="num" style="color:#32EACB">0.5</td>
+          <td class="num" style="color:#60a5fa">0.4</td>
+          <td class="num" style="color:#f59e0b">0.1</td>
+          <td class="num" style="color:#94a3b8">—</td>
+        </tr><tr>
+          <td>87</td>
+          <td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">THAY THẾ MÁY ĐO HOẠT ĐỘ NƯỚC ĐÃ HƯ HỎNG - PHÒNG LAB MSI</div></td>
+          <td class="num" style="color:#32EACB">0.5</td>
+          <td class="num" style="color:#60a5fa">0.5</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+          <td class="num" style="color:#94a3b8">—</td>
+        </tr><tr>
+          <td>88</td>
+          <td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">THAY THẾ KHUÔN THỔI CHAI VÀ SỬA KHUÔN NẮP SA TẾ CHIN-SU</div></td>
+          <td class="num" style="color:#32EACB">0.5</td>
+          <td class="num" style="color:#60a5fa">0.0</td>
+          <td class="num" style="color:#f59e0b">0.5</td>
+          <td class="num" style="color:#94a3b8">—</td>
+        </tr><tr>
+          <td>89</td>
+          <td><span class="site-badge">JPR</span></td>
+          <td><div class="proj-name">CHUYỂN ĐỔI HỆ THỐNG THANH TOÁN TẠI CHUỖI TỰ GIẶT SẤY CHANTÉ</div></td>
+          <td class="num" style="color:#32EACB">0.4</td>
+          <td class="num" style="color:#60a5fa">0.0</td>
+          <td class="num" style="color:#f59e0b">0.4</td>
+          <td class="num" style="color:#94a3b8">—</td>
+        </tr><tr>
+          <td>90</td>
+          <td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">SỬA CHỮA NỒI STEPHAN 6,7 LINE TƯƠNG ỚT AUTO 3 MSI</div></td>
+          <td class="num" style="color:#32EACB">0.4</td>
+          <td class="num" style="color:#60a5fa">0.4</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+          <td class="num" style="color:#94a3b8">—</td>
+        </tr><tr>
+          <td>91</td>
+          <td><span class="site-badge">MHD</span></td>
+          <td><div class="proj-name">MUA HỘP GIẢM TỐC CHO MÁY TRỘN VÀ MÁY TẠO HẠT XƯỞNG HẠT NÊM MHD</div></td>
+          <td class="num" style="color:#32EACB">0.4</td>
+          <td class="num" style="color:#60a5fa">0.4</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+          <td class="num" style="color:#94a3b8">—</td>
+        </tr><tr>
+          <td>92</td>
+          <td><span class="site-badge">MMB</span></td>
+          <td><div class="proj-name">THAY THẾ BỘ ĐIỀU KHIỂN PPC MÁY KISTER – DC SX MẮM MMB</div></td>
+          <td class="num" style="color:#32EACB">0.4</td>
+          <td class="num" style="color:#60a5fa">0.4</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+          <td class="num" style="color:#94a3b8">—</td>
+        </tr><tr>
+          <td>93</td>
+          <td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">THAY THẾ BƠM TRỤC VÍT HƯ HỎNG CHO CÁC LINE TƯƠNG ỚT</div></td>
+          <td class="num" style="color:#32EACB">0.4</td>
+          <td class="num" style="color:#60a5fa">0.4</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+          <td class="num" style="color:#94a3b8">—</td>
+        </tr><tr>
+          <td>94</td>
+          <td><span class="site-badge">NET</span></td>
+          <td><div class="proj-name">THAY THẾ MỘT PHẦN MÁI TÔN KHO NHÀ MÁY NET THIỆT HẠI DO GIÓ LỐC</div></td>
+          <td class="num" style="color:#32EACB">0.4</td>
+          <td class="num" style="color:#60a5fa">0.0</td>
+          <td class="num" style="color:#f59e0b">0.4</td>
+          <td class="num" style="color:#94a3b8">—</td>
+        </tr><tr>
+          <td>95</td>
+          <td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">CẢI TẠO HỆ THỐNG PCCC - MSI</div></td>
+          <td class="num" style="color:#32EACB">0.4</td>
+          <td class="num" style="color:#60a5fa">0.2</td>
+          <td class="num" style="color:#f59e0b">0.2</td>
+          <td class="num" style="color:#94a3b8">—</td>
+        </tr><tr>
+          <td>96</td>
+          <td><span class="site-badge">MSC</span></td>
+          <td><div class="proj-name">ĐẦU TƯ MUA THIẾT BỊ GHI NHIỆT ĐỘ DÒNG NHỎ GỌN – R&D</div></td>
+          <td class="num" style="color:#32EACB">0.4</td>
+          <td class="num" style="color:#60a5fa">0.0</td>
+          <td class="num" style="color:#f59e0b">0.4</td>
+          <td class="num" style="color:#94a3b8">—</td>
+        </tr><tr>
+          <td>97</td>
+          <td><span class="site-badge">MHD</span></td>
+          <td><div class="proj-name">BẢO TRÌ ĐỊNH KỲ MÁY NÉN KHÍ HITACHI - MÁY SỐ 01 VÀ SỐ 02 – MHD</div></td>
+          <td class="num" style="color:#32EACB">0.4</td>
+          <td class="num" style="color:#60a5fa">0.4</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+          <td class="num" style="color:#94a3b8">—</td>
+        </tr><tr>
+          <td>98</td>
+          <td><span class="site-badge">MHD</span></td>
+          <td><div class="proj-name">LẮP ĐẶT VAN ĐIỀU KHIỂN CẤP MỞ HƠI HẤP TỰ ĐỘNG CHO 07 LINE MÌ – MHD</div></td>
+          <td class="num" style="color:#32EACB">0.4</td>
+          <td class="num" style="color:#60a5fa">0.4</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+          <td class="num" style="color:#94a3b8">—</td>
+        </tr><tr>
+          <td>99</td>
+          <td><span class="site-badge">MMB</span></td>
+          <td><div class="proj-name">THAY THẾ TỦ ĐIỆN KHU VỰC LỌC NƯỚC MUỐI – DC SX MẮM MMB</div></td>
+          <td class="num" style="color:#32EACB">0.4</td>
+          <td class="num" style="color:#60a5fa">0.4</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+          <td class="num" style="color:#94a3b8">—</td>
+        </tr><tr>
+          <td>100</td>
+          <td><span class="site-badge">MSC</span></td>
+          <td><div class="proj-name">ĐẦU TƯ KHUÔN PILOT CHAI NƯỚC TĂNG LỰC VÀNG WK247 500ML</div></td>
+          <td class="num" style="color:#32EACB">0.3</td>
+          <td class="num" style="color:#60a5fa">0.0</td>
+          <td class="num" style="color:#f59e0b">0.3</td>
+          <td class="num" style="color:#94a3b8">—</td>
+        </tr><tr>
+          <td>101</td>
+          <td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">TRUNG TÂM TRUYỀN TIN PCCC MSI VỀ TRUNG TÂM PCCC CÔNG AN TP.HCM</div></td>
+          <td class="num" style="color:#32EACB">0.3</td>
+          <td class="num" style="color:#60a5fa">0.1</td>
+          <td class="num" style="color:#f59e0b">0.2</td>
+          <td class="num" style="color:#94a3b8">—</td>
+        </tr><tr>
+          <td>102</td>
+          <td><span class="site-badge">MMB</span></td>
+          <td><div class="proj-name">LẮP BÀN NÂNG KHU VỰC PHA KANSUI, SEASONNING XƯỞNG MÌ - MMB</div></td>
+          <td class="num" style="color:#32EACB">0.3</td>
+          <td class="num" style="color:#60a5fa">0.3</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+          <td class="num" style="color:#94a3b8">—</td>
+        </tr><tr>
+          <td>103</td>
+          <td><span class="site-badge">MMB</span></td>
+          <td><div class="proj-name">ĐẦU TƯ BĂNG TẢI IN MÃ QR CODE CHO MÌ LY MMB</div></td>
+          <td class="num" style="color:#32EACB">0.3</td>
+          <td class="num" style="color:#60a5fa">0.0</td>
+          <td class="num" style="color:#f59e0b">0.3</td>
+          <td class="num" style="color:#94a3b8">—</td>
+        </tr><tr>
+          <td>104</td>
+          <td><span class="site-badge">QNW</span></td>
+          <td><div class="proj-name">MUA THAY THẾ PALLET HƯ HỎNG TẠI NHÀ MÁY QNW</div></td>
+          <td class="num" style="color:#32EACB">0.3</td>
+          <td class="num" style="color:#60a5fa">0.3</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+          <td class="num" style="color:#94a3b8">—</td>
+        </tr><tr>
+          <td>105</td>
+          <td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">ĐẦU TƯ BỔ SUNG BÀN NÂNG THỦY LỰC SÀN CHẾ BIẾN GIA VỊ F2 MSI</div></td>
+          <td class="num" style="color:#32EACB">0.3</td>
+          <td class="num" style="color:#60a5fa">0.0</td>
+          <td class="num" style="color:#f59e0b">0.3</td>
+          <td class="num" style="color:#94a3b8">—</td>
+        </tr><tr>
+          <td>106</td>
+          <td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">ĐẦU TƯ THIẾT BỊ TÁCH DỊCH ME CHUYÊN DỤNG NHÀ MÁY GIA VỊ F2 MSI</div></td>
+          <td class="num" style="color:#32EACB">0.3</td>
+          <td class="num" style="color:#60a5fa">0.3</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+          <td class="num" style="color:#94a3b8">—</td>
+        </tr><tr>
+          <td>107</td>
+          <td><span class="site-badge">MPQ</span></td>
+          <td><div class="proj-name">TRIỂN KHAI ACTIVE QR CODE DÂY CHUYỀN FISH SAUCE MPQ</div></td>
+          <td class="num" style="color:#32EACB">0.3</td>
+          <td class="num" style="color:#60a5fa">0.0</td>
+          <td class="num" style="color:#f59e0b">0.3</td>
+          <td class="num" style="color:#94a3b8">—</td>
+        </tr><tr>
+          <td>108</td>
+          <td><span class="site-badge">VHC</span></td>
+          <td><div class="proj-name">SỬA CHỮA MÁY ĐO KÍCH THƯỚC HẠT MASTERIZER MS3000E</div></td>
+          <td class="num" style="color:#32EACB">0.3</td>
+          <td class="num" style="color:#60a5fa">0.0</td>
+          <td class="num" style="color:#f59e0b">0.3</td>
+          <td class="num" style="color:#94a3b8">—</td>
+        </tr><tr>
+          <td>109</td>
+          <td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">THAY THẾ TẤM TẢN NHIỆT VÀ BẢO TRÌ COOLING F2 VÀ F5 MSI</div></td>
+          <td class="num" style="color:#32EACB">0.3</td>
+          <td class="num" style="color:#60a5fa">0.3</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+          <td class="num" style="color:#94a3b8">—</td>
+        </tr><tr>
+          <td>110</td>
+          <td><span class="site-badge">MHD</span></td>
+          <td><div class="proj-name">THAY THẾ QUẠT DÀN LẠNH & BẢO TRÌ ĐIỀU HÒA PHÒNG TRỘN, TẠO HẠT NÊM – MHD</div></td>
+          <td class="num" style="color:#32EACB">0.3</td>
+          <td class="num" style="color:#60a5fa">0.2</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+          <td class="num" style="color:#94a3b8">—</td>
+        </tr><tr>
+          <td>111</td>
+          <td><span class="site-badge">MSC</span></td>
+          <td><div class="proj-name">ĐẦU TƯ 2 MÁY TÍNH PHỤC VỤ NGHIÊN CỨU MÔ HÌNH PILOT SẢN XUẤT – R&D</div></td>
+          <td class="num" style="color:#32EACB">0.3</td>
+          <td class="num" style="color:#60a5fa">0.0</td>
+          <td class="num" style="color:#f59e0b">0.3</td>
+          <td class="num" style="color:#94a3b8">—</td>
+        </tr><tr>
+          <td>112</td>
+          <td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">ĐẦU TƯ BĂNG TẢI IN MÃ QR CODE CHO MÌ LY MSI</div></td>
+          <td class="num" style="color:#32EACB">0.3</td>
+          <td class="num" style="color:#60a5fa">0.0</td>
+          <td class="num" style="color:#f59e0b">0.3</td>
+          <td class="num" style="color:#94a3b8">—</td>
+        </tr><tr>
+          <td>113</td>
+          <td><span class="site-badge">MPQ</span></td>
+          <td><div class="proj-name">CHỐNG THẤM BỂ CHƯỢP BÊ TÔNG NHÀ B2,3,4,5 BẰNG COMPOSITE - MPQ (GĐ 4)</div></td>
+          <td class="num" style="color:#32EACB">0.2</td>
+          <td class="num" style="color:#60a5fa">0.0</td>
+          <td class="num" style="color:#f59e0b">0.2</td>
+          <td class="num" style="color:#94a3b8">—</td>
+        </tr><tr>
+          <td>114</td>
+          <td><span class="site-badge">VHC</span></td>
+          <td><div class="proj-name">THAY THẾ NGUYÊN VẬT LIỆU LỌC XỬ LÝ NƯỚC SAU 04 NĂM SỬ DỤNG</div></td>
+          <td class="num" style="color:#32EACB">0.2</td>
+          <td class="num" style="color:#60a5fa">0.2</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+          <td class="num" style="color:#94a3b8">—</td>
+        </tr><tr>
+          <td>115</td>
+          <td><span class="site-badge">MHG</span></td>
+          <td><div class="proj-name">ĐẦU TƯ THIẾT BỊ KIỂM TRA CHẤT LƯỢNG SẢN PHẨM LINE TRÀ</div></td>
+          <td class="num" style="color:#32EACB">0.2</td>
+          <td class="num" style="color:#60a5fa">0.0</td>
+          <td class="num" style="color:#f59e0b">0.2</td>
+          <td class="num" style="color:#94a3b8">—</td>
+        </tr><tr>
+          <td>116</td>
+          <td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">THAY THẾ PARTS TRỤC CHÍNH MÁY DÁN NHÃN NEWTEC LINE CHILLI AUTO 2</div></td>
+          <td class="num" style="color:#32EACB">0.2</td>
+          <td class="num" style="color:#60a5fa">0.0</td>
+          <td class="num" style="color:#f59e0b">0.2</td>
+          <td class="num" style="color:#94a3b8">—</td>
+        </tr><tr>
+          <td>117</td>
+          <td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">CẢI TẠO PHÒNG LÀM VIỆC BAN TGĐ VĂN PHÒNG O1 MSI</div></td>
+          <td class="num" style="color:#32EACB">0.2</td>
+          <td class="num" style="color:#60a5fa">0.0</td>
+          <td class="num" style="color:#f59e0b">0.2</td>
+          <td class="num" style="color:#94a3b8">—</td>
+        </tr><tr>
+          <td>118</td>
+          <td><span class="site-badge">VHC</span></td>
+          <td><div class="proj-name">THAY MỚI MỘT SỐ MÀNG RO 20 SỬ DỤNG TỪ NĂM 2018 - 2023</div></td>
+          <td class="num" style="color:#32EACB">0.2</td>
+          <td class="num" style="color:#60a5fa">0.2</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+          <td class="num" style="color:#94a3b8">—</td>
+        </tr><tr>
+          <td>119</td>
+          <td><span class="site-badge">MHD</span></td>
+          <td><div class="proj-name">THAY TÔN MÁI KHU NHÀ VỆ SINH, PHÒNG BẢO TRÌ & PHÒNG GIẶT ĐỒ – MHD</div></td>
+          <td class="num" style="color:#32EACB">0.2</td>
+          <td class="num" style="color:#60a5fa">0.2</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+          <td class="num" style="color:#94a3b8">—</td>
+        </tr><tr>
+          <td>120</td>
+          <td><span class="site-badge">MSC</span></td>
+          <td><div class="proj-name">ĐẦU TƯ KHUÔN NẮP PILOT CHO FISH SAUCE NAM NGƯ TINH TẾ</div></td>
+          <td class="num" style="color:#32EACB">0.2</td>
+          <td class="num" style="color:#60a5fa">0.0</td>
+          <td class="num" style="color:#f59e0b">0.2</td>
+          <td class="num" style="color:#94a3b8">—</td>
+        </tr><tr>
+          <td>121</td>
+          <td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">ĐẦU TƯ HỆ LOA PHÁT THÔNG TIN NHÀ MÁY F2- MSI</div></td>
+          <td class="num" style="color:#32EACB">0.2</td>
+          <td class="num" style="color:#60a5fa">0.0</td>
+          <td class="num" style="color:#f59e0b">0.2</td>
+          <td class="num" style="color:#94a3b8">—</td>
+        </tr><tr>
+          <td>122</td>
+          <td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">SỬA CHỮA, CẢI TẠO MÁI CHE KHU HÓA CHẤT HVP</div></td>
+          <td class="num" style="color:#32EACB">0.2</td>
+          <td class="num" style="color:#60a5fa">0.1</td>
+          <td class="num" style="color:#f59e0b">0.1</td>
+          <td class="num" style="color:#94a3b8">—</td>
+        </tr><tr>
+          <td>123</td>
+          <td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">THAY THẾ DÀN COIL PHÒNG TRỘN VÀ ĐÓNG GÓI BỘT LẮC F2</div></td>
+          <td class="num" style="color:#32EACB">0.1</td>
+          <td class="num" style="color:#60a5fa">0.0</td>
+          <td class="num" style="color:#f59e0b">0.1</td>
+          <td class="num" style="color:#94a3b8">—</td>
+        </tr><tr>
+          <td>124</td>
+          <td><span class="site-badge">VCF</span></td>
+          <td><div class="proj-name">LẮP ĐẶT LAN CAN ĐỈNH BỒN VÀ SÀN THAO TÁC KHU CHẾ BIẾN LINE CSD</div></td>
+          <td class="num" style="color:#32EACB">0.1</td>
+          <td class="num" style="color:#60a5fa">0.0</td>
+          <td class="num" style="color:#f59e0b">0.1</td>
+          <td class="num" style="color:#94a3b8">—</td>
+        </tr><tr>
+          <td>125</td>
+          <td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">THAY THẾ KHUNG ĐỠ TRỤC MOTOR - CÁNH KHUẤY U-TANK #2 - HVP</div></td>
+          <td class="num" style="color:#32EACB">0.1</td>
+          <td class="num" style="color:#60a5fa">0.1</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+          <td class="num" style="color:#94a3b8">—</td>
+        </tr><tr>
+          <td>126</td>
+          <td><span class="site-badge">MHD</span></td>
+          <td><div class="proj-name">MUA MÁY ĐO ĐỘ BỤC THÙNG CARTON – NHÀ MÁY MHD</div></td>
+          <td class="num" style="color:#32EACB">0.1</td>
+          <td class="num" style="color:#60a5fa">0.1</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+          <td class="num" style="color:#94a3b8">—</td>
+        </tr><tr>
+          <td>127</td>
+          <td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">LẮP CÁNH KHUẤY BỒN T2T4 LINE FS 02 HÒA TAN PREMIX CHO INNOVATION, XK</div></td>
+          <td class="num" style="color:#32EACB">0.1</td>
+          <td class="num" style="color:#60a5fa">0.1</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+          <td class="num" style="color:#94a3b8">—</td>
+        </tr><tr>
+          <td>128</td>
+          <td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">THAY THẾ DÀN COIL AHU PHÒNG ĐÓNG GÓI GIA VỊ LINE 12 F2</div></td>
+          <td class="num" style="color:#32EACB">0.1</td>
+          <td class="num" style="color:#60a5fa">0.0</td>
+          <td class="num" style="color:#f59e0b">0.1</td>
+          <td class="num" style="color:#94a3b8">—</td>
+        </tr><tr>
+          <td>129</td>
+          <td><span class="site-badge">VHC</span></td>
+          <td><div class="proj-name">ĐẦU TƯ MUA MÁY ĐO QUANG PHỔ UV VIS – LAB VHC</div></td>
+          <td class="num" style="color:#32EACB">0.1</td>
+          <td class="num" style="color:#60a5fa">0.1</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+          <td class="num" style="color:#94a3b8">—</td>
+        </tr><tr>
+          <td>130</td>
+          <td><span class="site-badge">QNW</span></td>
+          <td><div class="proj-name">ĐẦU TƯ THAY THẾ MÁY IN PHUN - PHÂN XƯỞNG QUANG HANH - QNW</div></td>
+          <td class="num" style="color:#32EACB">0.1</td>
+          <td class="num" style="color:#60a5fa">0.1</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+          <td class="num" style="color:#94a3b8">—</td>
+        </tr><tr>
+          <td>131</td>
+          <td><span class="site-badge">MHD</span></td>
+          <td><div class="proj-name">KHẮC PHỤC LỐI THOÁT HIỂM, ĐÈN EXIT, ĐÈN KHẨN CẤP PHỤC VỤ PCCC - MHD</div></td>
+          <td class="num" style="color:#32EACB">0.1</td>
+          <td class="num" style="color:#60a5fa">0.1</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+          <td class="num" style="color:#94a3b8">—</td>
+        </tr><tr style="background:#1e3a5f;border-top:2px solid #32EACB;position:sticky;bottom:0">
+      <td colspan="3" style="font-weight:900;color:#fff">TOTAL (131 dự án)</td>
       <td class="num" style="color:#32EACB;font-weight:900">498.6</td>
       <td class="num" style="color:#60a5fa;font-weight:900">175.3</td>
       <td class="num" style="color:#f59e0b;font-weight:900">323.3</td>
       <td class="num" style="color:#94a3b8">—</td>
-    </tr></tbody></table></div>
+    </tr></tbody>
+        </table>
+      </div>
+      <div class="scroll-hint">↕ Cuộn để xem 131 dự án · Top 10 được highlight xanh đậm</div>
     </div>
+
+    <!-- Tab 2: Unapproved In AP -->
     <div class="tab-pane" id="tab1">
-      <div style="background:#0a0f1e;font-family:'Montserrat',sans-serif;">
-      <table><colgroup><col style="width:32px"><col style="width:54px"><col><col style="width:90px"><col style="width:90px"><col style="width:90px"></colgroup>
-      <thead><tr><th>#</th><th>Site</th><th>Project Name</th><th class="num">Budget MUF</th><th class="num">In AP</th><th class="num">Out AP</th></tr></thead>
-      <tbody><tr>
+      <div class="table-scroll">
+        <table>
+          <colgroup><col class="c-rank"><col class="c-site"><col class="c-name"><col class="c-n"><col class="c-n"><col class="c-n"></colgroup>
+          <thead><tr><th>#</th><th>Site</th><th>Project Name</th><th class="num">Budget MUF</th><th class="num">In AP</th><th class="num">Out AP</th></tr></thead>
+          <tbody><tr style="background:#0f1f3a">
           <td>1</td><td><span class="site-badge">MHG</span></td>
-          <td><div class="proj-name">NHÀ KHO 6900M2</div></td>
-          <td class="num" style="color:#32EACB">50.0</td>
-          <td class="num" style="color:#60a5fa">70.0</td>
-          <td class="num" style="color:#f59e0b">0.0</td>
-        </tr><tr>
-          <td>2</td><td><span class="site-badge">MSI</span></td>
-          <td><div class="proj-name">KHO F8</div></td>
-          <td class="num" style="color:#32EACB">30.0</td>
-          <td class="num" style="color:#60a5fa">60.0</td>
-          <td class="num" style="color:#f59e0b">0.0</td>
-        </tr><tr>
-          <td>3</td><td><span class="site-badge">MMB</span></td>
-          <td><div class="proj-name">MÁY ĐÓNG GÓI VÀ CARTONER- LINE 4</div></td>
-          <td class="num" style="color:#32EACB">20.0</td>
-          <td class="num" style="color:#60a5fa">40.0</td>
-          <td class="num" style="color:#f59e0b">0.0</td>
-        </tr><tr>
-          <td>4</td><td><span class="site-badge">MSI</span></td>
-          <td><div class="proj-name">ĐẦU TƯ  ROBOT CHẤT PALLET 03 LINE TƯƠNG ỚT</div></td>
-          <td class="num" style="color:#32EACB">13.8</td>
-          <td class="num" style="color:#60a5fa">27.6</td>
-          <td class="num" style="color:#f59e0b">0.0</td>
-        </tr><tr>
-          <td>5</td><td><span class="site-badge">MHG</span></td>
-          <td><div class="proj-name">DIGITALIZATION CHO TEA 365 VÀ CENTRALIZE SCADA MHG</div></td>
-          <td class="num" style="color:#32EACB">12.3</td>
-          <td class="num" style="color:#60a5fa">24.6</td>
-          <td class="num" style="color:#f59e0b">0.0</td>
-        </tr><tr>
-          <td>6</td><td><span class="site-badge">MSI</span></td>
-          <td><div class="proj-name">ĐẦU TƯ THIẾT BỊ TĂNG C/S ĐÓNG GÓI XỐT DẦU SỆT VÀ ĐÓNG GÓI PHOMAI</div></td>
-          <td class="num" style="color:#32EACB">11.6</td>
-          <td class="num" style="color:#60a5fa">23.2</td>
-          <td class="num" style="color:#f59e0b">0.0</td>
-        </tr><tr>
-          <td>7</td><td><span class="site-badge">VCF</span></td>
-          <td><div class="proj-name">DIGITALIZATION CHO VCF</div></td>
-          <td class="num" style="color:#32EACB">11.4</td>
-          <td class="num" style="color:#60a5fa">22.8</td>
-          <td class="num" style="color:#f59e0b">0.0</td>
-        </tr><tr>
-          <td>8</td><td><span class="site-badge">MSI</span></td>
-          <td><div class="proj-name">MÁY DÁN NHÃN DECAL CHO NƯỚC TƯƠNG</div></td>
-          <td class="num" style="color:#32EACB">11.1</td>
-          <td class="num" style="color:#60a5fa">22.3</td>
-          <td class="num" style="color:#f59e0b">0.0</td>
-        </tr><tr>
-          <td>9</td><td><span class="site-badge">VCF</span></td>
-          <td><div class="proj-name">EOL CHO LINE CSD</div></td>
-          <td class="num" style="color:#32EACB">10.5</td>
-          <td class="num" style="color:#60a5fa">21.0</td>
-          <td class="num" style="color:#f59e0b">0.0</td>
-        </tr><tr>
-          <td>10</td><td><span class="site-badge">MSI</span></td>
-          <td><div class="proj-name">DI DỜI KHU XỬ LÝ NƯỚC VỀ U1-MSI</div></td>
-          <td class="num" style="color:#32EACB">10.0</td>
-          <td class="num" style="color:#60a5fa">20.0</td>
-          <td class="num" style="color:#f59e0b">0.0</td>
-        </tr><tr style="background:#1a1f35"><td colspan="3" style="font-weight:800;color:#94a3b8;font-size:10px">Others (221 projects)</td>
-      <td class="num" style="color:#32EACB">300.8</td><td class="num" style="color:#60a5fa">585.4</td><td class="num" style="color:#f59e0b">0.0</td></tr>
-    <tr style="background:#1e3a5f;border-top:2px solid #32EACB"><td colspan="3" style="font-weight:900;color:#fff">TOTAL (231 projects)</td>
-      <td class="num" style="color:#32EACB;font-weight:900">481.5</td><td class="num" style="color:#60a5fa;font-weight:900">916.9</td><td class="num" style="color:#f59e0b;font-weight:900">0.0</td></tr></tbody></table></div>
-    </div>
-    <div class="tab-pane" id="tab2">
-      <div style="background:#0a0f1e;font-family:'Montserrat',sans-serif;">
-      <table><colgroup><col style="width:32px"><col style="width:54px"><col><col style="width:90px"><col style="width:90px"><col style="width:90px"></colgroup>
-      <thead><tr><th>#</th><th>Site</th><th>Project Name</th><th class="num">Budget MUF</th><th class="num">In AP</th><th class="num">Out AP</th></tr></thead>
-      <tbody><tr>
-          <td>1</td><td><span class="site-badge">NET</span></td>
-          <td><div class="proj-name">NÂNG CẤP HỆ THỐNG CHẾ BIẾN</div></td>
-          <td class="num" style="color:#32EACB">90.0</td>
-          <td class="num" style="color:#60a5fa">0.0</td>
-          <td class="num" style="color:#f59e0b">90.0</td>
-        </tr><tr>
-          <td>2</td><td><span class="site-badge">MHG</span></td>
           <td><div class="proj-name">NHÀ KHO 6900M2</div></td>
           <td class="num" style="color:#32EACB">50.0</td>
           <td class="num" style="color:#60a5fa">35.0</td>
           <td class="num" style="color:#f59e0b">15.0</td>
-        </tr><tr>
+        </tr><tr style="background:#0f1f3a">
+          <td>2</td><td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">KHO F8</div></td>
+          <td class="num" style="color:#32EACB">30.0</td>
+          <td class="num" style="color:#60a5fa">30.0</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr style="background:#0f1f3a">
           <td>3</td><td><span class="site-badge">MSI</span></td>
-          <td><div class="proj-name">CẢI TẠO THÔNG THOÁNG MÌ TÔ F3</div></td>
-          <td class="num" style="color:#32EACB">8.7</td>
-          <td class="num" style="color:#60a5fa">0.0</td>
-          <td class="num" style="color:#f59e0b">8.7</td>
+          <td><div class="proj-name">ĐẦU TƯ  ROBOT CHẤT PALLET 03 LINE TƯƠNG ỚT</div></td>
+          <td class="num" style="color:#32EACB">13.8</td>
+          <td class="num" style="color:#60a5fa">27.6</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr style="background:#0f1f3a">
+          <td>4</td><td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">MÁY DÁN NHÃN DECAL CHO NƯỚC TƯƠNG</div></td>
+          <td class="num" style="color:#32EACB">11.1</td>
+          <td class="num" style="color:#60a5fa">22.3</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr style="background:#0f1f3a">
+          <td>5</td><td><span class="site-badge">MMB</span></td>
+          <td><div class="proj-name">MÁY ĐÓNG GÓI VÀ CARTONER- LINE 4</div></td>
+          <td class="num" style="color:#32EACB">20.0</td>
+          <td class="num" style="color:#60a5fa">20.0</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr style="background:#0f1f3a">
+          <td>6</td><td><span class="site-badge">MHG</span></td>
+          <td><div class="proj-name">DIGITALIZATION CHO TEA 365 VÀ CENTRALIZE SCADA MHG</div></td>
+          <td class="num" style="color:#32EACB">12.3</td>
+          <td class="num" style="color:#60a5fa">12.3</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr style="background:#0f1f3a">
+          <td>7</td><td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">ĐẦU TƯ THIẾT BỊ TĂNG C/S ĐÓNG GÓI XỐT DẦU SỆT VÀ ĐÓNG GÓI PHOMAI</div></td>
+          <td class="num" style="color:#32EACB">11.6</td>
+          <td class="num" style="color:#60a5fa">11.6</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr style="background:#0f1f3a">
+          <td>8</td><td><span class="site-badge">VCF</span></td>
+          <td><div class="proj-name">DIGITALIZATION CHO VCF</div></td>
+          <td class="num" style="color:#32EACB">11.4</td>
+          <td class="num" style="color:#60a5fa">11.4</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr style="background:#0f1f3a">
+          <td>9</td><td><span class="site-badge">VCF</span></td>
+          <td><div class="proj-name">EOL CHO LINE CSD</div></td>
+          <td class="num" style="color:#32EACB">10.5</td>
+          <td class="num" style="color:#60a5fa">10.5</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr style="background:#0f1f3a">
+          <td>10</td><td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">DI DỜI KHU XỬ LÝ NƯỚC VỀ U1-MSI</div></td>
+          <td class="num" style="color:#32EACB">10.0</td>
+          <td class="num" style="color:#60a5fa">10.0</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
         </tr><tr>
-          <td>4</td><td><span class="site-badge">VCF</span></td>
+          <td>11</td><td><span class="site-badge">NET</span></td>
+          <td><div class="proj-name">MIXING AUTOMATION</div></td>
+          <td class="num" style="color:#32EACB">10.0</td>
+          <td class="num" style="color:#60a5fa">10.0</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>12</td><td><span class="site-badge">MHD</span></td>
+          <td><div class="proj-name">PALLETIZER MÌ (02LINE/01 MÁY)</div></td>
+          <td class="num" style="color:#32EACB">9.0</td>
+          <td class="num" style="color:#60a5fa">9.0</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>13</td><td><span class="site-badge">MMB</span></td>
+          <td><div class="proj-name">MÁY ĐÓNG GÓI GIA VỊ NÊM TỐC ĐỘ CAO SỐ LƯỢNG 2 MÁY</div></td>
+          <td class="num" style="color:#32EACB">9.0</td>
+          <td class="num" style="color:#60a5fa">9.0</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>14</td><td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">ĐẦU TƯ THAY THẾ CÁC BỒN NGUỘI ĐỨNG THẾ HỆ CŨ CHUYỂN SANG NGUỘI NGANG NHƯ JANSON</div></td>
+          <td class="num" style="color:#32EACB">9.0</td>
+          <td class="num" style="color:#60a5fa">9.0</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>15</td><td><span class="site-badge">MMB</span></td>
+          <td><div class="proj-name">PRE-CAPEX CHO THỦ TỤC QH, GPXD, DTM,…</div></td>
+          <td class="num" style="color:#32EACB">8.0</td>
+          <td class="num" style="color:#60a5fa">8.0</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>16</td><td><span class="site-badge">VCF</span></td>
+          <td><div class="proj-name">MÁY RANG DẠNG TRỐNG 100KG</div></td>
+          <td class="num" style="color:#32EACB">8.0</td>
+          <td class="num" style="color:#60a5fa">8.0</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>17</td><td><span class="site-badge">MHG</span></td>
+          <td><div class="proj-name">DIGITALIZATION CHO SỮA</div></td>
+          <td class="num" style="color:#32EACB">7.3</td>
+          <td class="num" style="color:#60a5fa">7.3</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>18</td><td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">ĐẦU TƯ MÁY CARTONER CHẠY ĐƯỢC THÙNG 100 VÀ THÙNG 30 GÓI CHO LINE 3</div></td>
+          <td class="num" style="color:#32EACB">7.1</td>
+          <td class="num" style="color:#60a5fa">7.1</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>19</td><td><span class="site-badge">MHG</span></td>
+          <td><div class="proj-name">THÔNG THOÁNG NHÀ F3 MHG</div></td>
+          <td class="num" style="color:#32EACB">6.5</td>
+          <td class="num" style="color:#60a5fa">6.5</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>20</td><td><span class="site-badge">NET</span></td>
+          <td><div class="proj-name">BỂ NƯỚC THỦY CỤC 1000M3</div></td>
+          <td class="num" style="color:#32EACB">6.0</td>
+          <td class="num" style="color:#60a5fa">6.0</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>21</td><td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">LẮP ĐẶT MÁY TURBO BLOWER</div></td>
+          <td class="num" style="color:#32EACB">5.4</td>
+          <td class="num" style="color:#60a5fa">5.4</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>22</td><td><span class="site-badge">NET</span></td>
+          <td><div class="proj-name">XÂY MỚI NHÀ ĂN, Y TẾ, LOCKER</div></td>
+          <td class="num" style="color:#32EACB">5.4</td>
+          <td class="num" style="color:#60a5fa">5.4</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>23</td><td><span class="site-badge">MHG</span></td>
+          <td><div class="proj-name">NÂNG CẤP HỆ ĐIỀU KHIỂN TỰ ĐỘNG VÀ TỦ ĐIỆN LINE FS</div></td>
+          <td class="num" style="color:#32EACB">5.0</td>
+          <td class="num" style="color:#60a5fa">5.0</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>24</td><td><span class="site-badge">MMB</span></td>
+          <td><div class="proj-name">ĐẦU TƯ MUA COBOT BỐC THÙNG XƯỞNG MÌ F2</div></td>
+          <td class="num" style="color:#32EACB">5.0</td>
+          <td class="num" style="color:#60a5fa">5.0</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>25</td><td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">THAY THẾ 05 BỒN COMPOSITE (BỒN 24M3) TRONG KHU SX SS (SL: 5 BỒN).</div></td>
+          <td class="num" style="color:#32EACB">4.7</td>
+          <td class="num" style="color:#60a5fa">4.7</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>26</td><td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">TU SỬA, NÂNG CẤP MÁY THANH TRÙNG LINE SOYA SAUCE</div></td>
+          <td class="num" style="color:#32EACB">4.5</td>
+          <td class="num" style="color:#60a5fa">4.5</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>27</td><td><span class="site-badge">VCF</span></td>
           <td><div class="proj-name">IN LASER CHO 2 MÁY 10 LANE STICK( BO GÓC VÀ EASY TEAR), BO GÓC CHO MÁY 06 LÀN</div></td>
           <td class="num" style="color:#32EACB">9.6</td>
           <td class="num" style="color:#60a5fa">4.5</td>
           <td class="num" style="color:#f59e0b">5.1</td>
         </tr><tr>
-          <td>5</td><td><span class="site-badge">MSI</span></td>
+          <td>28</td><td><span class="site-badge">MMB</span></td>
+          <td><div class="proj-name">ĐẦU TƯ MUA COBOT ĐỔ BỘT XƯỞNG F2,F3</div></td>
+          <td class="num" style="color:#32EACB">4.5</td>
+          <td class="num" style="color:#60a5fa">4.5</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>29</td><td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">NHÃN CHAI MÀNG CO CHO FS OTLS</div></td>
+          <td class="num" style="color:#32EACB">2.0</td>
+          <td class="num" style="color:#60a5fa">4.0</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>30</td><td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">QR CODE CHO TƯƠNG ỚT CÒN LẠI</div></td>
+          <td class="num" style="color:#32EACB">4.0</td>
+          <td class="num" style="color:#60a5fa">4.0</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>31</td><td><span class="site-badge">NET</span></td>
+          <td><div class="proj-name">NÂNG CẤP VĂN PHÒNG KHU LÀM VIỆC, LAB</div></td>
+          <td class="num" style="color:#32EACB">4.0</td>
+          <td class="num" style="color:#60a5fa">4.0</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>32</td><td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">ĐẦU TƯ MÁY LỌC KHUNG BẢNG SỐ 3 THAY THẾ MÁY LỌC TQ - HVP</div></td>
+          <td class="num" style="color:#32EACB">4.0</td>
+          <td class="num" style="color:#60a5fa">4.0</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>33</td><td><span class="site-badge">MHD</span></td>
+          <td><div class="proj-name">MUA MÁY XRAY CHO LINE MÌ SỐ 2, 4, 8</div></td>
+          <td class="num" style="color:#32EACB">3.8</td>
+          <td class="num" style="color:#60a5fa">3.8</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>34</td><td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">ĐẦU TƯ THAY THẾ 11 NỒI NẤU THẾ HỆ CŨ, NÂNG CẤP 3 NỒI NẤU THỦ CÔNG</div></td>
+          <td class="num" style="color:#32EACB">3.5</td>
+          <td class="num" style="color:#60a5fa">3.5</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>35</td><td><span class="site-badge">MSC</span></td>
+          <td><div class="proj-name">THAY THẾ THIẾT BỊ MERAKI END OF SUPPORT TẠI DATA CENTER</div></td>
+          <td class="num" style="color:#32EACB">3.5</td>
+          <td class="num" style="color:#60a5fa">3.5</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>36</td><td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">THAY THẾ MÂM MÁY LỌC KHS FS</div></td>
+          <td class="num" style="color:#32EACB">3.0</td>
+          <td class="num" style="color:#60a5fa">3.0</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>37</td><td><span class="site-badge">MSC</span></td>
+          <td><div class="proj-name">HỆ THỐNG BACKUP TAPE</div></td>
+          <td class="num" style="color:#32EACB">3.0</td>
+          <td class="num" style="color:#60a5fa">3.0</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>38</td><td><span class="site-badge">NET</span></td>
+          <td><div class="proj-name">TỰ ĐỘNG HÓA KHU PROCESS TRL</div></td>
+          <td class="num" style="color:#32EACB">3.0</td>
+          <td class="num" style="color:#60a5fa">3.0</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>39</td><td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">ĐẦU TƯ HỆ THỐNG CHỨA VÀ ĐỊNH LƯỢNG NL KHÔ KHỐI LƯỢNG LỚN NHƯ MUỐI ĐƯỜNG BỘT NGỌT</div></td>
+          <td class="num" style="color:#32EACB">3.0</td>
+          <td class="num" style="color:#60a5fa">3.0</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>40</td><td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">THAY THẾ 2 MÁY TẠO HẠT NÊM</div></td>
+          <td class="num" style="color:#32EACB">3.0</td>
+          <td class="num" style="color:#60a5fa">3.0</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>41</td><td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">THAY THẾ CÁC BỒN TRÊN LINE CHẾ BIẾN FS</div></td>
+          <td class="num" style="color:#32EACB">2.7</td>
+          <td class="num" style="color:#60a5fa">2.7</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>42</td><td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">THAY BỒN CHÂM/CHỨA SHORT LINE 1 2 3 VÀ CẢI TẠO ĐƯỜNG ỐNG HƠI NƯỚC NGƯNG SAU BỒN TĐN</div></td>
+          <td class="num" style="color:#32EACB">2.7</td>
+          <td class="num" style="color:#60a5fa">2.7</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>43</td><td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">ĐẦU TƯ ROBOT BỐC TÔ MÌ TỰ ĐỘNG VÀO THÙNG CHO LINE TÔ SEAL</div></td>
+          <td class="num" style="color:#32EACB">2.7</td>
+          <td class="num" style="color:#60a5fa">2.7</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>44</td><td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">ĐẦU TƯ ROBOT BỐC TÔ MÌ TỰ ĐỘNG VÀO THÙNG CHO LINE TÔ NẮP</div></td>
+          <td class="num" style="color:#32EACB">2.7</td>
+          <td class="num" style="color:#60a5fa">2.7</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>45</td><td><span class="site-badge">VHC</span></td>
+          <td><div class="proj-name">CẢI TẠO VÁCH TRẦN, PANEL PHÒNG CHIẾT LINE 2, LINE 3 & CHẾ BIẾN CŨ THEO CHUẨN CHẤT LƯỢNG</div></td>
+          <td class="num" style="color:#32EACB">2.6</td>
+          <td class="num" style="color:#60a5fa">2.6</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>46</td><td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">ĐẠI TU THIẾT BỊ ĐIỆN KHU CHẾ BIẾN FS</div></td>
+          <td class="num" style="color:#32EACB">2.5</td>
+          <td class="num" style="color:#60a5fa">2.5</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>47</td><td><span class="site-badge">MHG</span></td>
+          <td><div class="proj-name">MỞ RỘNG KHO MÁT F3 (RACK KỆ+XE NÂNG ĐỨNG LÁI)</div></td>
+          <td class="num" style="color:#32EACB">2.5</td>
+          <td class="num" style="color:#60a5fa">2.5</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>48</td><td><span class="site-badge">MHG</span></td>
+          <td><div class="proj-name">CẢI TẠO CƠ SỞ HẠ TẦNG, CỔNG RÀO SỤT LÚN,  - THAY LOGO MASAN F2, F1, LẮP VAN 1 CHIỀU NƯỚC THẢI VỀ KCN, BÙ NHỰA</div></td>
+          <td class="num" style="color:#32EACB">2.5</td>
+          <td class="num" style="color:#60a5fa">2.5</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>49</td><td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">CƠ GIỚI HÓA LỰA ỚT</div></td>
+          <td class="num" style="color:#32EACB">2.4</td>
+          <td class="num" style="color:#60a5fa">2.4</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>50</td><td><span class="site-badge">MHD</span></td>
+          <td><div class="proj-name">THAY 09 BỒN PHA KANSUI + 04 BỒN PHA SEASONING (BỒN 3M3 INOX 304)</div></td>
+          <td class="num" style="color:#32EACB">2.2</td>
+          <td class="num" style="color:#60a5fa">2.2</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>51</td><td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">THAY THẾ MÂM TRÊN VÀ MÂM DƯỚI MÁY XAY TINH (FRYRUKUMA) MÁY 2-3-4-5</div></td>
+          <td class="num" style="color:#32EACB">2.0</td>
+          <td class="num" style="color:#60a5fa">2.0</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>52</td><td><span class="site-badge">VHC</span></td>
+          <td><div class="proj-name">NÂNG CẤP LÒ HƠI BIOMASS</div></td>
+          <td class="num" style="color:#32EACB">2.0</td>
+          <td class="num" style="color:#60a5fa">2.0</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>53</td><td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">THAY THẾ BỒN BUFFER LÀM NGUỘI 411 LINE 2</div></td>
+          <td class="num" style="color:#32EACB">2.0</td>
+          <td class="num" style="color:#60a5fa">2.0</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>54</td><td><span class="site-badge">QNW</span></td>
+          <td><div class="proj-name">HỆ THỐNG CHỮA CHÁY - NHÀ MÁY QHP</div></td>
+          <td class="num" style="color:#32EACB">2.0</td>
+          <td class="num" style="color:#60a5fa">2.0</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>55</td><td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">MÁY CẤP NĨA TỰ ĐỘNG VÀO LY MÌ LINE 5</div></td>
+          <td class="num" style="color:#32EACB">2.0</td>
+          <td class="num" style="color:#60a5fa">2.0</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>56</td><td><span class="site-badge">VHC</span></td>
+          <td><div class="proj-name">ĐẦU TƯ HỆ THỐNG LỌC XỬ LÝ FLO NƯỚC KHOÁNG TDS 1900, CÔNG SUẤT 30M3/H</div></td>
+          <td class="num" style="color:#32EACB">1.9</td>
+          <td class="num" style="color:#60a5fa">1.9</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>57</td><td><span class="site-badge">MSC</span></td>
+          <td><div class="proj-name">ĐẦU TƯ MÁY ĐO ĐỘ LƯU BIẾN CHO CÁC SẢN PHẨM PC</div></td>
+          <td class="num" style="color:#32EACB">1.8</td>
+          <td class="num" style="color:#60a5fa">1.8</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>58</td><td><span class="site-badge">MMB</span></td>
+          <td><div class="proj-name">MUA MỚI 02 BỒN TRAO ĐỔI NHIỆT MMB</div></td>
+          <td class="num" style="color:#32EACB">1.7</td>
+          <td class="num" style="color:#60a5fa">1.7</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>59</td><td><span class="site-badge">HGB</span></td>
+          <td><div class="proj-name">THAY THAN HOẠT TÍNH 2 LỌC THAN NƯỚC NHÀ NẤU (4.2 TẤN), LỌC (5.6 TẤN)</div></td>
+          <td class="num" style="color:#32EACB">1.7</td>
+          <td class="num" style="color:#60a5fa">1.7</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>60</td><td><span class="site-badge">MPQ</span></td>
+          <td><div class="proj-name">CẢI TẠO HẠ TẦNG NHÀ XƯỞNG: SÀN NHÀ B4,5; CẢI TẠO NẮP HỐ GAZ NƯỚC MƯA, NƯỚC THẢI (46 NẮP HỐ GAZ + 53MD BÓ VỈA + 8 VỊ TRÍ GẠCH NỀN KHU TIẾP KHÁCH BỊ HỎNG+THAY CỬA CUỐN B1,2,3)</div></td>
+          <td class="num" style="color:#32EACB">1.6</td>
+          <td class="num" style="color:#60a5fa">1.6</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>61</td><td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">ĐẠI TU KHỐI NÓNG KHUÔN 72 CAV + THAY 72 Ổ CAVITY MÁY ÉP PHÔI HUSKY (MÁY ÉP)</div></td>
+          <td class="num" style="color:#32EACB">1.5</td>
+          <td class="num" style="color:#60a5fa">1.5</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>62</td><td><span class="site-badge">MMB</span></td>
+          <td><div class="proj-name">CẢI TẠO LAYOUT KHU VỰC CẤP NVL (NÊM, DẦU, OPP…) CHO DÂY CHUYỀN TÔ , LY  , LINE 5,6</div></td>
+          <td class="num" style="color:#32EACB">1.5</td>
+          <td class="num" style="color:#60a5fa">1.5</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>63</td><td><span class="site-badge">MSC</span></td>
+          <td><div class="proj-name">IOT HỆ THỐNG XỬ LÝ NƯỚC THẢI MCH</div></td>
+          <td class="num" style="color:#32EACB">1.4</td>
+          <td class="num" style="color:#60a5fa">1.4</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>64</td><td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">ĐẦU TƯ HỆ THỐNG ĐỊNH LƯỢNG DẦU PALM TỰ ĐỘNG VÀO 11 NỔI NẤU HỞ VÀ 2 NỒI CHÂN KHÔNG</div></td>
+          <td class="num" style="color:#32EACB">1.4</td>
+          <td class="num" style="color:#60a5fa">1.4</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>65</td><td><span class="site-badge">MMB</span></td>
+          <td><div class="proj-name">TỰ ĐỘNG HÓA CÔNG ĐOẠN ĐỔ ĐƯỜNG - CHẾ BIẾN CSD - ĐẦU TƯ MÁY BỐC BAO ĐƯỜNG</div></td>
+          <td class="num" style="color:#32EACB">1.4</td>
+          <td class="num" style="color:#60a5fa">1.4</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>66</td><td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">ĐẠI TU THIẾT BỊ ĐIỆN KHU CHẾ BIẾN LINE NƯỚC TƯƠNG</div></td>
+          <td class="num" style="color:#32EACB">1.3</td>
+          <td class="num" style="color:#60a5fa">1.3</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>67</td><td><span class="site-badge">MMB</span></td>
+          <td><div class="proj-name">ĐẦU TƯ 01 KHO MÁT ~ 120M2</div></td>
+          <td class="num" style="color:#32EACB">1.3</td>
+          <td class="num" style="color:#60a5fa">1.3</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>68</td><td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">PHẦN MỀM MÔ PHỎNG QUÁ TRÌNH THỔI KHUÔN PHÔI/CHAI</div></td>
+          <td class="num" style="color:#32EACB">1.3</td>
+          <td class="num" style="color:#60a5fa">1.3</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>69</td><td><span class="site-badge">MSC</span></td>
+          <td><div class="proj-name">ĐẦU TƯ 2 NỒI PILOT GIA VỊ MÌ DẠNG XỐT ĐH BÁCH KHOA</div></td>
+          <td class="num" style="color:#32EACB">1.3</td>
+          <td class="num" style="color:#60a5fa">1.3</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>70</td><td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">THAY THẾ THIẾT BỊ MERAKI END OF SUPPORT TẠI NHÀ MÁY MSI</div></td>
+          <td class="num" style="color:#32EACB">1.2</td>
+          <td class="num" style="color:#60a5fa">1.2</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>71</td><td><span class="site-badge">MSC</span></td>
+          <td><div class="proj-name">ĐẦU TƯ XE 7 CHỖ CHỞ NHÂN VIÊN</div></td>
+          <td class="num" style="color:#32EACB">1.2</td>
+          <td class="num" style="color:#60a5fa">1.2</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>72</td><td><span class="site-badge">MHD</span></td>
+          <td><div class="proj-name">LÀM TRẦN PANEL KHU VỰC BƠM BỘT VÀ CÁN BỘT CHO CÁC LINE MÌ</div></td>
+          <td class="num" style="color:#32EACB">1.2</td>
+          <td class="num" style="color:#60a5fa">1.2</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>73</td><td><span class="site-badge">MMB</span></td>
+          <td><div class="proj-name">CẢI TẠO CSHT, SỬA LẠI ĐƯỜNG NHỰA, SÀN BETONG</div></td>
+          <td class="num" style="color:#32EACB">1.2</td>
+          <td class="num" style="color:#60a5fa">1.2</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>74</td><td><span class="site-badge">VHC</span></td>
+          <td><div class="proj-name">SỬA CHỮA NỀN SÂN XUẤT NHẬP HÀNG KHO DC1, D2</div></td>
+          <td class="num" style="color:#32EACB">1.1</td>
+          <td class="num" style="color:#60a5fa">1.1</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>75</td><td><span class="site-badge">MHG</span></td>
+          <td><div class="proj-name">THAY THẾ THIẾT BỊ MERAKI END OF SUPPORT TẠI NHÀ MÁY MHG</div></td>
+          <td class="num" style="color:#32EACB">1.1</td>
+          <td class="num" style="color:#60a5fa">1.1</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>76</td><td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">SỬA CHỮA, THAY THẾ ĐƯỜNG ỐNG, VAN, KHỚP GIẢN NỠ  HỆ ĐƯỜNG ỐNG HƠI F5</div></td>
+          <td class="num" style="color:#32EACB">1.0</td>
+          <td class="num" style="color:#60a5fa">1.0</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>77</td><td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">MUA THIẾT BỊ DỰ PHÒNG LINE 4 TRẠM CIP 1,2,3, HỆ HTPG CBTO</div></td>
+          <td class="num" style="color:#32EACB">1.0</td>
+          <td class="num" style="color:#60a5fa">1.0</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>78</td><td><span class="site-badge">HGB</span></td>
+          <td><div class="proj-name">CẢI TẠO CƠ SỞ HẠ TẦNG,  BÙ NHỰA LỐI VÀO CÁC KHU XUẤT NHẬP HÀNG SX, THAY TOLE CÁC VỊ TRÍ DỘT MÁI KHU SX, KHO, DỘT TỦ ĐIỆN</div></td>
+          <td class="num" style="color:#32EACB">1.0</td>
+          <td class="num" style="color:#60a5fa">1.0</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>79</td><td><span class="site-badge">MMB</span></td>
+          <td><div class="proj-name">CẢI TẠO KHU VỰC VP F1</div></td>
+          <td class="num" style="color:#32EACB">1.0</td>
+          <td class="num" style="color:#60a5fa">1.0</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>80</td><td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">TRUNG TU CỤM TRUYỀN ĐỘNG CỤM ĐÓNG LY VÀ HỘP GIẢM TỐC CHO CỤM LẬT LY LINE 5</div></td>
+          <td class="num" style="color:#32EACB">1.0</td>
+          <td class="num" style="color:#60a5fa">1.0</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>81</td><td><span class="site-badge">MSC</span></td>
+          <td><div class="proj-name">HỆ THỐNG WINDOWS UPDATE WSUS</div></td>
+          <td class="num" style="color:#32EACB">1.0</td>
+          <td class="num" style="color:#60a5fa">1.0</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>82</td><td><span class="site-badge">MSC</span></td>
+          <td><div class="proj-name">HỆ THỐNG QUẢN LÝ TRUY CẬP ĐẶC QUYỀN CÁC SERVER VÀ NETWORK</div></td>
+          <td class="num" style="color:#32EACB">1.0</td>
+          <td class="num" style="color:#60a5fa">1.0</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>83</td><td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">ĐẦU TƯ PHẦN MỀM KIẾM SOÁT TRUY VẾT, ĐỊNH LƯỢNG, NẠP NGUYÊN LIỆU VÀ KHSX</div></td>
+          <td class="num" style="color:#32EACB">1.0</td>
+          <td class="num" style="color:#60a5fa">1.0</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>84</td><td><span class="site-badge">MPQ</span></td>
+          <td><div class="proj-name">CƠ GIỚI HÓA NHẬP CÁ - THÁO XÁC</div></td>
+          <td class="num" style="color:#32EACB">1.0</td>
+          <td class="num" style="color:#60a5fa">1.0</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>85</td><td><span class="site-badge">NET</span></td>
+          <td><div class="proj-name">ĐẦU TƯ MÁY VẶN NẮP LINE 2</div></td>
+          <td class="num" style="color:#32EACB">1.0</td>
+          <td class="num" style="color:#60a5fa">1.0</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>86</td><td><span class="site-badge">MMB</span></td>
+          <td><div class="proj-name">NÂNG CẤP CẢI TẠO NHÀ THU GOM RÁC</div></td>
+          <td class="num" style="color:#32EACB">0.9</td>
+          <td class="num" style="color:#60a5fa">0.9</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>87</td><td><span class="site-badge">VCF</span></td>
+          <td><div class="proj-name">TRỘN DỊCH RTD IC1</div></td>
+          <td class="num" style="color:#32EACB">0.9</td>
+          <td class="num" style="color:#60a5fa">0.9</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>88</td><td><span class="site-badge">MHG</span></td>
+          <td><div class="proj-name">MUA BỒN TDN DỰ PHÒNG MHG</div></td>
+          <td class="num" style="color:#32EACB">0.9</td>
+          <td class="num" style="color:#60a5fa">0.9</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>89</td><td><span class="site-badge">QNW</span></td>
+          <td><div class="proj-name">THAY THẾ TRẦN NHỰA; THÔNG GIÓ ÂM TRẦN; HỆ THỐNG CHIẾU SÁNG NHÀ XƯỞNG SẢN XUẤT _ QHP</div></td>
+          <td class="num" style="color:#32EACB">0.8</td>
+          <td class="num" style="color:#60a5fa">0.8</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>90</td><td><span class="site-badge">MHG</span></td>
+          <td><div class="proj-name">CHI PHÍ CẢI TẠO DẪN HƯỚNG BĂNG TẢI CHUYỂN ĐỔI NHANH</div></td>
+          <td class="num" style="color:#32EACB">0.8</td>
+          <td class="num" style="color:#60a5fa">0.8</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>91</td><td><span class="site-badge">MHD</span></td>
+          <td><div class="proj-name">THAY THẾ TỦ ĐIỀU KHIỂN KHU VỰC PHA CHẾ KANSUI, SEASONING:
++ NÂNG CẤP & TÍCH HỢP HỆ ĐIỀU KHIỂN QUA PLC + ĐỊNH LƯỢNG NƯỚC PHA KANSUI + ĐIỀU KHIỂN NHIỆT KANSUI + SCADA CHO HỆ CHILLER + LÀM LẠI HỆ CHIẾU SÁNG VẬN HÀNH KANSUI</div></td>
+          <td class="num" style="color:#32EACB">0.8</td>
+          <td class="num" style="color:#60a5fa">0.8</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>92</td><td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">LẮP ĐẶT HỆ QUẠT, ĐƯỜNG ỐNG LÀM MÁT TỦ ĐIỆN KHU CHẾ BIẾN TƯƠNG ỚT</div></td>
+          <td class="num" style="color:#32EACB">0.8</td>
+          <td class="num" style="color:#60a5fa">0.8</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>93</td><td><span class="site-badge">NET</span></td>
+          <td><div class="proj-name">ĐẦU TƯ 2 MÁY QUẤN KHUYẾN MÃI TÚI</div></td>
+          <td class="num" style="color:#32EACB">0.8</td>
+          <td class="num" style="color:#60a5fa">0.8</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>94</td><td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">ĐẦU TƯ CAMERA KIỂM TRA LỖI CHẤT LƯỢNG HỞ NẮP LY</div></td>
+          <td class="num" style="color:#32EACB">0.8</td>
+          <td class="num" style="color:#60a5fa">0.8</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>95</td><td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">CHUẨN HÓA THÁNG MÁY MSI</div></td>
+          <td class="num" style="color:#32EACB">0.8</td>
+          <td class="num" style="color:#60a5fa">0.8</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>96</td><td><span class="site-badge">MMB</span></td>
+          <td><div class="proj-name">MUA MỚI MÁY CÂN THÙNG BĂNG TẢI LINE 1,2,3</div></td>
+          <td class="num" style="color:#32EACB">0.8</td>
+          <td class="num" style="color:#60a5fa">0.8</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>97</td><td><span class="site-badge">VCF</span></td>
+          <td><div class="proj-name">MES DIGITALIZED - CÁC WAREHOUSE CHƯA TRIỂN KHAI VCF</div></td>
+          <td class="num" style="color:#32EACB">0.8</td>
+          <td class="num" style="color:#60a5fa">0.8</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>98</td><td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">THAY THẾ MÁY NGHIỀN SỐ 4</div></td>
+          <td class="num" style="color:#32EACB">1.8</td>
+          <td class="num" style="color:#60a5fa">0.8</td>
+          <td class="num" style="color:#f59e0b">1.1</td>
+        </tr><tr>
+          <td>99</td><td><span class="site-badge">MHD</span></td>
+          <td><div class="proj-name">HỆ THỐNG MÁI CHE TỪ VĂN PHÒNG XUỐNG CANTEEN + TỪ CẦU THANG LỐI VÀO XƯỞNG TỚI CANTEEN + LỐI ĐI BỘ XUNG QUANH + CẢNH QUAN NHÀ MÁY, THAY CỬA SỔ CHO ĐỒNG BỘ…</div></td>
+          <td class="num" style="color:#32EACB">0.7</td>
+          <td class="num" style="color:#60a5fa">0.7</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>100</td><td><span class="site-badge">MHG</span></td>
+          <td><div class="proj-name">ĐẦU TƯ 3 MÁY XẾP MÌ BÁN TỰ ĐỘNG L03</div></td>
+          <td class="num" style="color:#32EACB">0.7</td>
+          <td class="num" style="color:#60a5fa">0.7</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>101</td><td><span class="site-badge">MHG</span></td>
+          <td><div class="proj-name">BỘ CAMERRA ARTWORK MÀNG, NÊM RAU, BUNG NGÀM,  ARTWORK THÙNG XUÁT KHẨU</div></td>
+          <td class="num" style="color:#32EACB">0.7</td>
+          <td class="num" style="color:#60a5fa">0.7</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>102</td><td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">ĐẦU TƯ THIẾT BỊ LỌC ONLINE KIỂM SOÁT CHẤT LƯỢNG SAU NẤU</div></td>
+          <td class="num" style="color:#32EACB">0.7</td>
+          <td class="num" style="color:#60a5fa">0.7</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>103</td><td><span class="site-badge">MHG</span></td>
+          <td><div class="proj-name">GÓI VẬT TƯ DỰ PHÒNG CHO DÂY CHUYỀN SẢN XUẤT CSD</div></td>
+          <td class="num" style="color:#32EACB">0.7</td>
+          <td class="num" style="color:#60a5fa">0.7</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>104</td><td><span class="site-badge">VHC</span></td>
+          <td><div class="proj-name">SỬA CHỮA/CẢI TẠO/XÂY MỚI LẠI ĐƯỜNG LỘ TIẾP GIÁP QUỐC LỘ 1A VÀO NM</div></td>
+          <td class="num" style="color:#32EACB">0.7</td>
+          <td class="num" style="color:#60a5fa">0.7</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>105</td><td><span class="site-badge">MHD</span></td>
+          <td><div class="proj-name">BÀN NÂNG NGUYÊN LIỆU LÊN CỐI TRỘN CHO HẠT NÊM</div></td>
+          <td class="num" style="color:#32EACB">0.7</td>
+          <td class="num" style="color:#60a5fa">0.7</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>106</td><td><span class="site-badge">VHC</span></td>
+          <td><div class="proj-name">DỰ PHÒNG CP CẢI TẠO TRẠM BƠM PCCC</div></td>
+          <td class="num" style="color:#32EACB">0.7</td>
+          <td class="num" style="color:#60a5fa">0.7</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>107</td><td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">COE DATA CHO CMMS (LINES SX & UTILITY & THUÊ AMAZON)</div></td>
+          <td class="num" style="color:#32EACB">0.7</td>
+          <td class="num" style="color:#60a5fa">0.7</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>108</td><td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">THAY THẾ 2 MÁY THỔI TAY BTĐ GOUZHU THAY THẾ CHILLER MÁY THỔI TAY GOUZHU (MÁY THỔI TĐ VÀ BTĐ)</div></td>
+          <td class="num" style="color:#32EACB">0.7</td>
+          <td class="num" style="color:#60a5fa">0.7</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>109</td><td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">ĐẦU TƯ BỒN TRAO ĐỔI NHIỆT DỰ PHÒNG MSI</div></td>
+          <td class="num" style="color:#32EACB">0.7</td>
+          <td class="num" style="color:#60a5fa">0.7</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>110</td><td><span class="site-badge">HGB</span></td>
+          <td><div class="proj-name">ĐẠI TU MÁY NÉN LẠNH NH3 HỆ CO2</div></td>
+          <td class="num" style="color:#32EACB">0.6</td>
+          <td class="num" style="color:#60a5fa">0.6</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>111</td><td><span class="site-badge">MMB</span></td>
+          <td><div class="proj-name">GIA CỐ CHỐNG BÃO MÁI NHÀ XƯỞNG F0, F1, F2, NHÀ XE, LAB,…</div></td>
+          <td class="num" style="color:#32EACB">0.6</td>
+          <td class="num" style="color:#60a5fa">0.6</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>112</td><td><span class="site-badge">QNW</span></td>
+          <td><div class="proj-name">THAY THẾ MÁI TÔN; SỬA CHỮA NHÀ KHO PHỤ TRỢ DC QUANG HANH. (1.008 M2)</div></td>
+          <td class="num" style="color:#32EACB">0.6</td>
+          <td class="num" style="color:#60a5fa">0.6</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>113</td><td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">MUA THAY THẾ PCC + SERVO MOTOR CHO KISTER LINE 2 FS</div></td>
+          <td class="num" style="color:#32EACB">0.6</td>
+          <td class="num" style="color:#60a5fa">0.6</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>114</td><td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">THAY THẾ SERVO DRIVER COSMOPACK LINE 2 FS</div></td>
+          <td class="num" style="color:#32EACB">0.6</td>
+          <td class="num" style="color:#60a5fa">0.6</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>115</td><td><span class="site-badge">VCF</span></td>
+          <td><div class="proj-name">THAY THẾ ĐƯỜNG ỐNG, BỒN CHILLER CSD F5</div></td>
+          <td class="num" style="color:#32EACB">0.6</td>
+          <td class="num" style="color:#60a5fa">0.6</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>116</td><td><span class="site-badge">MSI</span></td>
           <td><div class="proj-name">ĐẦU TƯ MÁY CẮT HẠT LỰU TỐC ĐỘ CAO CHO TỎI</div></td>
           <td class="num" style="color:#32EACB">2.9</td>
           <td class="num" style="color:#60a5fa">0.6</td>
           <td class="num" style="color:#f59e0b">2.3</td>
         </tr><tr>
+          <td>117</td><td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">MUA COBOT BỐC THÙNG CHẤT PALLET LINE 5</div></td>
+          <td class="num" style="color:#32EACB">0.6</td>
+          <td class="num" style="color:#60a5fa">0.6</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>118</td><td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">THAY MỚI 2 CHILLER CHO MÌ F1, F3 ( KHU KANSUI)</div></td>
+          <td class="num" style="color:#32EACB">0.6</td>
+          <td class="num" style="color:#60a5fa">0.6</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>119</td><td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">HỆ RACK CHO KHO F5</div></td>
+          <td class="num" style="color:#32EACB">0.6</td>
+          <td class="num" style="color:#60a5fa">0.6</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>120</td><td><span class="site-badge">VHC</span></td>
+          <td><div class="proj-name">CHUYỂN ĐỔI ĐẤT NÔNG NGHIỆP SANG ĐẤT PHI NÔNG NGHIỆP KHU ĐẤT TRẠM BƠM PHÚ LẠC VÀ TRẠM BƠM PHƯỚC THỂ</div></td>
+          <td class="num" style="color:#32EACB">0.6</td>
+          <td class="num" style="color:#60a5fa">0.6</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>121</td><td><span class="site-badge">MMB</span></td>
+          <td><div class="proj-name">NÂNG CẤP HỆ THỐNG TRUYỀN ĐỘNG MÁY COSMOPACK CHO MẮM</div></td>
+          <td class="num" style="color:#32EACB">0.6</td>
+          <td class="num" style="color:#60a5fa">0.6</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>122</td><td><span class="site-badge">QNW</span></td>
+          <td><div class="proj-name">TRUNG TU MÁY CHIẾT RÓT 12K _ QHP</div></td>
+          <td class="num" style="color:#32EACB">0.6</td>
+          <td class="num" style="color:#60a5fa">0.6</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>123</td><td><span class="site-badge">MHD</span></td>
+          <td><div class="proj-name">THAY THẾ THIẾT BỊ MERAKI END OF SUPPORT TẠI NHÀ MÁY MHD</div></td>
+          <td class="num" style="color:#32EACB">0.6</td>
+          <td class="num" style="color:#60a5fa">0.6</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>124</td><td><span class="site-badge">MSC</span></td>
+          <td><div class="proj-name">THAY THẾ THIẾT BỊ MERAKI END OF SUPPORT TẠI MSC</div></td>
+          <td class="num" style="color:#32EACB">0.6</td>
+          <td class="num" style="color:#60a5fa">0.6</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>125</td><td><span class="site-badge">HGC</span></td>
+          <td><div class="proj-name">SƠN TƯỜNG CHO CÁC NHÀ VP VÀ NHÀ PHỤ TRỢ HGC + VÁCH BỂ XLNT + VÁCH TƯỜNG NHÀ XƯỞNG.</div></td>
+          <td class="num" style="color:#32EACB">0.5</td>
+          <td class="num" style="color:#60a5fa">0.5</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>126</td><td><span class="site-badge">VHC</span></td>
+          <td><div class="proj-name">THAY 32 MÀNG LỌC RO ĐÃ SỬ DỤNG TỪ 2019</div></td>
+          <td class="num" style="color:#32EACB">0.5</td>
+          <td class="num" style="color:#60a5fa">0.5</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>127</td><td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">THAY THẾ ĐƯỜNG ỐNG KHU VỰC UPVC, PPR BẰNG INOX Ở F5</div></td>
+          <td class="num" style="color:#32EACB">0.5</td>
+          <td class="num" style="color:#60a5fa">0.5</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>128</td><td><span class="site-badge">MHD</span></td>
+          <td><div class="proj-name">CẢI TẠO LẠI BUỒNG HẤP LINE 6 - THAY KHUNG ĐỠ, RAY , NHÔNG TRỤC , INOX BƯNG, MÁNG HỨNG , CÁCH NHIỆT …</div></td>
+          <td class="num" style="color:#32EACB">0.5</td>
+          <td class="num" style="color:#60a5fa">0.5</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>129</td><td><span class="site-badge">NET</span></td>
+          <td><div class="proj-name">CAPEX CẢI TẠO THANG NÂNG BG - TRL</div></td>
+          <td class="num" style="color:#32EACB">0.5</td>
+          <td class="num" style="color:#60a5fa">0.5</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>130</td><td><span class="site-badge">NET</span></td>
+          <td><div class="proj-name">CAPEX CẢI TẠO HỆ THỐNG DẬP BỤI ƯỚT BG</div></td>
+          <td class="num" style="color:#32EACB">0.5</td>
+          <td class="num" style="color:#60a5fa">0.5</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>131</td><td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">MUA THAY THẾ DRIVER MÁY NHÃN NEWTECH ĐÓNG GÓI LINE 1&2&3, ĐƯA MÁY VỀ TỐC ĐỘ 18.000</div></td>
+          <td class="num" style="color:#32EACB">0.5</td>
+          <td class="num" style="color:#60a5fa">0.5</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>132</td><td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">LÀM VAN TỰ ĐỘNG CHUYỂN CIP T8T3 DG LINE 1,2,3,6,7,8 AUTO FS</div></td>
+          <td class="num" style="color:#32EACB">0.5</td>
+          <td class="num" style="color:#60a5fa">0.5</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>133</td><td><span class="site-badge">MSC</span></td>
+          <td><div class="proj-name">HỆ THỐNG RADIUS XÁC THỰC KẾT NỐI (WIFI/CABLE)</div></td>
+          <td class="num" style="color:#32EACB">0.5</td>
+          <td class="num" style="color:#60a5fa">0.5</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>134</td><td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">FACTORY TALK ASSET CENTER MSI</div></td>
+          <td class="num" style="color:#32EACB">0.5</td>
+          <td class="num" style="color:#60a5fa">0.5</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>135</td><td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">TỰ ĐỘNG HÓA KIỂM SOÁT ĐỊNH MỨC NƯỚC VÀO BỒN KHUẤY, MÁNG NGÂM SCTO</div></td>
+          <td class="num" style="color:#32EACB">0.5</td>
+          <td class="num" style="color:#60a5fa">0.5</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>136</td><td><span class="site-badge">NET</span></td>
+          <td><div class="proj-name">ĐẦU TƯ QUẤN KHUYẾN MÃI CHAI</div></td>
+          <td class="num" style="color:#32EACB">0.5</td>
+          <td class="num" style="color:#60a5fa">0.5</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>137</td><td><span class="site-badge">VCF</span></td>
+          <td><div class="proj-name">DÒ KIM LOẠI IC2</div></td>
+          <td class="num" style="color:#32EACB">0.5</td>
+          <td class="num" style="color:#60a5fa">0.5</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>138</td><td><span class="site-badge">MMB</span></td>
+          <td><div class="proj-name">FACTORY TALK ASSET CENTER</div></td>
+          <td class="num" style="color:#32EACB">0.5</td>
+          <td class="num" style="color:#60a5fa">0.5</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>139</td><td><span class="site-badge">VHC</span></td>
+          <td><div class="proj-name">ĐẦU TƯ HỆ THỐNG QR CODE ĐỊNH DANH VỎ BÌNH 20L SÓNG THẦN</div></td>
+          <td class="num" style="color:#32EACB">0.5</td>
+          <td class="num" style="color:#60a5fa">0.5</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>140</td><td><span class="site-badge">VHC</span></td>
+          <td><div class="proj-name">ĐẦU TƯ HỆ THỐNG QR CODE ĐỊNH DANH VỎ BÌNH 20L VĨNH HẢO</div></td>
+          <td class="num" style="color:#32EACB">0.5</td>
+          <td class="num" style="color:#60a5fa">0.5</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>141</td><td><span class="site-badge">VTF</span></td>
+          <td><div class="proj-name">QR CODE CHO VỎ BÌNH</div></td>
+          <td class="num" style="color:#32EACB">0.5</td>
+          <td class="num" style="color:#60a5fa">0.5</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>142</td><td><span class="site-badge">MMB</span></td>
+          <td><div class="proj-name">VAN TỔNG ĐIỀU KHIỂN TỰ ĐỘNG CHO  HẤP CÁC LINE 1, 2, 3, 4, 5, 6, 7,8</div></td>
+          <td class="num" style="color:#32EACB">0.5</td>
+          <td class="num" style="color:#60a5fa">0.5</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>143</td><td><span class="site-badge">MPQ</span></td>
+          <td><div class="proj-name">ĐẦU TƯ MÁY DÁN NHÃN CHAI VUÔNG THAY 3P</div></td>
+          <td class="num" style="color:#32EACB">0.5</td>
+          <td class="num" style="color:#60a5fa">0.5</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>144</td><td><span class="site-badge">VHC</span></td>
+          <td><div class="proj-name">DỰ PHÒNG CP LẮP ĐẶT HỆ THỐNG BÁO CHÁY</div></td>
+          <td class="num" style="color:#32EACB">0.5</td>
+          <td class="num" style="color:#60a5fa">0.5</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>145</td><td><span class="site-badge">VHC</span></td>
+          <td><div class="proj-name">LẮP ĐẶT HỆ THỐNG QUAN TRẮC TỰ ĐỘNG TẠI 2 MỎ KHAI THÁC NƯỚC KHOÁNG</div></td>
+          <td class="num" style="color:#32EACB">0.5</td>
+          <td class="num" style="color:#60a5fa">0.5</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>146</td><td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">MUA SPARE ĐÊ PHỤC HỒI CHO PHỐT TRỤC KHUẤY, DAO NỒI NẤU 2-3-4-5</div></td>
+          <td class="num" style="color:#32EACB">0.4</td>
+          <td class="num" style="color:#60a5fa">0.4</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>147</td><td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">SỬA CHỮA THANG MÁY : 11, 12 (PET), F3-1609, F3-1611, F3-1610</div></td>
+          <td class="num" style="color:#32EACB">0.4</td>
+          <td class="num" style="color:#60a5fa">0.4</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>148</td><td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">THAY THẾ, NÂNG CẤP HỆ THỐNG  MÁY NÉN KHÍ, SẤY KHÍ KHU XỬ LÝ NƯỚC THẢI</div></td>
+          <td class="num" style="color:#32EACB">0.4</td>
+          <td class="num" style="color:#60a5fa">0.4</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>149</td><td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">MUA PART DỰ PHÒNG MÁY FAMS ĐÓNG GÓI LINE 2&3</div></td>
+          <td class="num" style="color:#32EACB">0.4</td>
+          <td class="num" style="color:#60a5fa">0.4</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>150</td><td><span class="site-badge">NET</span></td>
+          <td><div class="proj-name">CẢI TẠO HỆ DEMIN TRL</div></td>
+          <td class="num" style="color:#32EACB">0.4</td>
+          <td class="num" style="color:#60a5fa">0.4</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>151</td><td><span class="site-badge">MMB</span></td>
+          <td><div class="proj-name">THAY THẾ THIẾT BỊ MERAKI END OF SUPPORT TẠI NHÀ MÁY MMB</div></td>
+          <td class="num" style="color:#32EACB">0.4</td>
+          <td class="num" style="color:#60a5fa">0.4</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>152</td><td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">THAY QUẠT THỔI VÀ QUẠT HÚT CHO BUỒNG NGUỘI LINE 1 2 7</div></td>
+          <td class="num" style="color:#32EACB">0.4</td>
+          <td class="num" style="color:#60a5fa">0.4</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>153</td><td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">TRUNG TU CARTONER LINE 7</div></td>
+          <td class="num" style="color:#32EACB">0.4</td>
+          <td class="num" style="color:#60a5fa">0.4</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>154</td><td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">ĐẠI TU CỤM VAN THINK TOP TRẠM CIP AUTO 1</div></td>
+          <td class="num" style="color:#32EACB">0.4</td>
+          <td class="num" style="color:#60a5fa">0.4</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>155</td><td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">ĐẠI TU HỆ ĐIỀU KHIỂN + SERVO DRIVER MÁY FILLER, LABELLER LINE NƯỚC TƯƠNG</div></td>
+          <td class="num" style="color:#32EACB">0.4</td>
+          <td class="num" style="color:#60a5fa">0.4</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>156</td><td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">MUA MỚI ĐẦU GHI NVR 64 KÊNH CAMERA CHO HỆ THỐNG CCTV TRUNG TÂM</div></td>
+          <td class="num" style="color:#32EACB">0.4</td>
+          <td class="num" style="color:#60a5fa">0.4</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>157</td><td><span class="site-badge">MHD</span></td>
+          <td><div class="proj-name">LẮP ĐẶT HỆ THỐNG ĐIỆN NĂNG LƯỢNG MẶT TRỜI CHO CANTEEN (KHÔNG DÙNG PIN LƯU TRỮ)</div></td>
+          <td class="num" style="color:#32EACB">0.4</td>
+          <td class="num" style="color:#60a5fa">0.4</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>158</td><td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">CẢI TIẾN LẮP THÊM MÀN HÌNH HMI ĐIỀU KHIỂN THIẾT BỊ ĐO MỨC BỒN  TẠI KHU VỰC SAU XAY LINE 1,2,3</div></td>
+          <td class="num" style="color:#32EACB">0.4</td>
+          <td class="num" style="color:#60a5fa">0.4</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>159</td><td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">ĐẦU TƯ SPARE PARTS CHO MÁY SEJIN, XỐT, MÁY SACHET 6 VÀ 7</div></td>
+          <td class="num" style="color:#32EACB">0.2</td>
+          <td class="num" style="color:#60a5fa">0.4</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>160</td><td><span class="site-badge">MHD</span></td>
+          <td><div class="proj-name">CAMERA AI; KẾT NỐI CCTV CENTRAL + MÁY PHÁT ĐIỆN + ĐƯỜNG DÂY ĐIỆN…</div></td>
+          <td class="num" style="color:#32EACB">0.4</td>
+          <td class="num" style="color:#60a5fa">0.4</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>161</td><td><span class="site-badge">VHC</span></td>
+          <td><div class="proj-name">THAY THẾ ĐÈN UV  30M3/H TDS1900</div></td>
+          <td class="num" style="color:#32EACB">0.4</td>
+          <td class="num" style="color:#60a5fa">0.4</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>162</td><td><span class="site-badge">QNW</span></td>
+          <td><div class="proj-name">THẢM EPOXY KHU VỰC SƠ CHẾ VỎ BÌNH VÀ KHU VỰC SẢN XUẤT _ SMP</div></td>
+          <td class="num" style="color:#32EACB">0.3</td>
+          <td class="num" style="color:#60a5fa">0.3</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>163</td><td><span class="site-badge">MHG</span></td>
+          <td><div class="proj-name">SỐ HOÁ TÍCH HỢP ĐẶT HÀNG, GIAO HÀNG, XÁC NHẬN NHẬN HÀNG VỚI NCC MHG</div></td>
+          <td class="num" style="color:#32EACB">0.3</td>
+          <td class="num" style="color:#60a5fa">0.3</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>164</td><td><span class="site-badge">MMB</span></td>
+          <td><div class="proj-name">SỐ HOÁ TÍCH HỢP ĐẶT HÀNG, GIAO HÀNG, XÁC NHẬN NHẬN HÀNG VỚI NCC MMB</div></td>
+          <td class="num" style="color:#32EACB">0.3</td>
+          <td class="num" style="color:#60a5fa">0.3</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>165</td><td><span class="site-badge">NET</span></td>
+          <td><div class="proj-name">SỐ HOÁ TÍCH HỢP ĐẶT HÀNG, GIAO HÀNG, XÁC NHẬN NHẬN HÀNG VỚI NCC NET</div></td>
+          <td class="num" style="color:#32EACB">0.3</td>
+          <td class="num" style="color:#60a5fa">0.3</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>166</td><td><span class="site-badge">VCF</span></td>
+          <td><div class="proj-name">SỐ HOÁ TÍCH HỢP ĐẶT HÀNG, GIAO HÀNG, XÁC NHẬN NHẬN HÀNG VỚI NCC VCF</div></td>
+          <td class="num" style="color:#32EACB">0.3</td>
+          <td class="num" style="color:#60a5fa">0.3</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>167</td><td><span class="site-badge">VHC</span></td>
+          <td><div class="proj-name">SỐ HOÁ TÍCH HỢP ĐẶT HÀNG, GIAO HÀNG, XÁC NHẬN NHẬN HÀNG VỚI NCC VHC</div></td>
+          <td class="num" style="color:#32EACB">0.3</td>
+          <td class="num" style="color:#60a5fa">0.3</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>168</td><td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">SỐ HOÁ TÍCH HỢP ĐẶT HÀNG, GIAO HÀNG, XÁC NHẬN NHẬN HÀNG VỚI NCC MSI</div></td>
+          <td class="num" style="color:#32EACB">0.3</td>
+          <td class="num" style="color:#60a5fa">0.3</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>169</td><td><span class="site-badge">MMB</span></td>
+          <td><div class="proj-name">THAY GẠCH LÁT NỀN TẦNG 1 VĂN PHÒNG  F1 VÀ SƠN LẠI VĂN PHÒNG F3</div></td>
+          <td class="num" style="color:#32EACB">0.3</td>
+          <td class="num" style="color:#60a5fa">0.3</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>170</td><td><span class="site-badge">MMB</span></td>
+          <td><div class="proj-name">THAY 02 CỬA CUỐN XƯỞNG F2 BỊ  HỎNG (1 CỬA KÍCH THƯỚC 6M X 6 M, 1 CÁI 4M X 4M)</div></td>
+          <td class="num" style="color:#32EACB">0.3</td>
+          <td class="num" style="color:#60a5fa">0.3</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>171</td><td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">SỮA CHỮA ĐƯỜNG DẨN TRẠM CÂN 80TON VÀ CHỐNG NƯỚC</div></td>
+          <td class="num" style="color:#32EACB">0.3</td>
+          <td class="num" style="color:#60a5fa">0.3</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>172</td><td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">SỬA CHỮA SÀN THAO TÁC BỂ AT - XLNT</div></td>
+          <td class="num" style="color:#32EACB">0.3</td>
+          <td class="num" style="color:#60a5fa">0.3</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>173</td><td><span class="site-badge">MSC</span></td>
+          <td><div class="proj-name">ĐẦU TƯ VISCOSMETER</div></td>
+          <td class="num" style="color:#32EACB">0.3</td>
+          <td class="num" style="color:#60a5fa">0.3</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>174</td><td><span class="site-badge">MSC</span></td>
+          <td><div class="proj-name">ĐẦU TƯ MÁY ÉP, LỌC VÀ TÁCH BÃ SOLID/LIQUID SỮA BẮP SỮA GẠO</div></td>
+          <td class="num" style="color:#32EACB">0.3</td>
+          <td class="num" style="color:#60a5fa">0.3</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>175</td><td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">SPARE PART ĐIỆN MÁY ĐG 8A1, 8A3 (MUA DỰ PHÒNG)</div></td>
+          <td class="num" style="color:#32EACB">0.3</td>
+          <td class="num" style="color:#60a5fa">0.3</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>176</td><td><span class="site-badge">VCF</span></td>
+          <td><div class="proj-name">HỆ TƯỚI CÂY TỰ ĐỘNG</div></td>
+          <td class="num" style="color:#32EACB">0.3</td>
+          <td class="num" style="color:#60a5fa">0.3</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>177</td><td><span class="site-badge">VHC</span></td>
+          <td><div class="proj-name">DỰ PHÒNG CP THIẾT KẾ, TRÌNH BẢN VẼ VÀ CÔNG VĂN GIẢI TRÌNH</div></td>
+          <td class="num" style="color:#32EACB">0.3</td>
+          <td class="num" style="color:#60a5fa">0.3</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>178</td><td><span class="site-badge">MHG</span></td>
+          <td><div class="proj-name">LÀM MÁNG HỨNG MÌ VỤN KV ĐÓNG GÓI</div></td>
+          <td class="num" style="color:#32EACB">0.3</td>
+          <td class="num" style="color:#60a5fa">0.3</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>179</td><td><span class="site-badge">MMB</span></td>
+          <td><div class="proj-name">THAY XÍCH CHÉN LINE PHỞ 1</div></td>
+          <td class="num" style="color:#32EACB">0.3</td>
+          <td class="num" style="color:#60a5fa">0.3</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>180</td><td><span class="site-badge">MHD</span></td>
+          <td><div class="proj-name">CẤU HÌNH LẠI PHÒNG BẢO TRÌ MHD</div></td>
+          <td class="num" style="color:#32EACB">0.3</td>
+          <td class="num" style="color:#60a5fa">0.3</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>181</td><td><span class="site-badge">MHD</span></td>
+          <td><div class="proj-name">CẢI TẠO KHO MÁT (BỎ VÁCH NGĂN, THAY CỬA, THÊM KỆ 3 TẦNG, BỎ KỆ CŨ)</div></td>
+          <td class="num" style="color:#32EACB">0.3</td>
+          <td class="num" style="color:#60a5fa">0.3</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>182</td><td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">HỆ KHUNG ĐỠ TRỘN SIÊU TỐC 1,2,3</div></td>
+          <td class="num" style="color:#32EACB">0.3</td>
+          <td class="num" style="color:#60a5fa">0.3</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>183</td><td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">CẢI TIẾN BĂNG TẢI BLOCK ĐẦU VÀO MÁY FAMS LINE 2, LINE3</div></td>
+          <td class="num" style="color:#32EACB">0.3</td>
+          <td class="num" style="color:#60a5fa">0.3</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>184</td><td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">THAY THẾ THÀNH CỤM ĐỠ 4 BỘ PHE BỊ RỈ SÉT ĂN MÒN, PHỒNG HƯ HỎNG NẶNG. (TRẠM CIP SS)</div></td>
+          <td class="num" style="color:#32EACB">0.3</td>
+          <td class="num" style="color:#60a5fa">0.3</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>185</td><td><span class="site-badge">MHD</span></td>
+          <td><div class="proj-name">COOLING PAD + ĐƯỜNG ỐNG CẤP GIÓ TƯƠI CHO CÁC LINE XƯỞNG MÌ</div></td>
+          <td class="num" style="color:#32EACB">0.3</td>
+          <td class="num" style="color:#60a5fa">0.3</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>186</td><td><span class="site-badge">HGB</span></td>
+          <td><div class="proj-name">THAY GASKET BỘ TRAO ĐỔI NHIỆT (PHE) THU HỒI MEN</div></td>
+          <td class="num" style="color:#32EACB">0.3</td>
+          <td class="num" style="color:#60a5fa">0.3</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>187</td><td><span class="site-badge">NET</span></td>
+          <td><div class="proj-name">TỦ AN TOÀN SINH HỌC ESCO/ AC2/4E8</div></td>
+          <td class="num" style="color:#32EACB">0.3</td>
+          <td class="num" style="color:#60a5fa">0.3</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>188</td><td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">THAY THẾ 3 BỘ CỬA CUỐN XUỐNG CẤP, KẸT HƯ KHÔNG CÒN KÉO LÊN XUỐNG XƯỞNG SẢN XUẤT - NƯỚC TƯƠNG F5</div></td>
+          <td class="num" style="color:#32EACB">0.2</td>
+          <td class="num" style="color:#60a5fa">0.2</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>189</td><td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">CẮT VÁCH MỞ LỐI VÀO CÓ CỬA CÁCH NHIỆT LỐI 602-PHÒNG ĐÁY UTANK XƯỞNG SẢN XUẤT HVP</div></td>
+          <td class="num" style="color:#32EACB">0.2</td>
+          <td class="num" style="color:#60a5fa">0.2</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>190</td><td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">SỬA CHỮA CÁC VAN KHÍ NÉN NƯỚC CẤP ĐIỀU KHIỂN TỰ ĐỘNG</div></td>
+          <td class="num" style="color:#32EACB">0.2</td>
+          <td class="num" style="color:#60a5fa">0.2</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>191</td><td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">SƠN SỬA TƯỜNG , CHỐNG DỘT NGOẠI VI TÒA NHÀ PREMIX</div></td>
+          <td class="num" style="color:#32EACB">0.2</td>
+          <td class="num" style="color:#60a5fa">0.2</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>192</td><td><span class="site-badge">VHC</span></td>
+          <td><div class="proj-name">THÍ NGHIỆM VÀ BẢO TRÌ TRẠM ĐIỆN VHC</div></td>
+          <td class="num" style="color:#32EACB">0.2</td>
+          <td class="num" style="color:#60a5fa">0.2</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>193</td><td><span class="site-badge">HGB</span></td>
+          <td><div class="proj-name">SỮA CHỮA LỐI ĐI TRÊN ĐỈNH CÁC SILO MALT</div></td>
+          <td class="num" style="color:#32EACB">0.2</td>
+          <td class="num" style="color:#60a5fa">0.2</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>194</td><td><span class="site-badge">MMB</span></td>
+          <td><div class="proj-name">HỆ THỐNG BỒN CHÂM BHT BHA (PREMIX) VÀO CHẢO CHIÊN LINE 1,2,3,4,5,6,7,8</div></td>
+          <td class="num" style="color:#32EACB">0.2</td>
+          <td class="num" style="color:#60a5fa">0.2</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>195</td><td><span class="site-badge">MPQ</span></td>
+          <td><div class="proj-name">LẮP ĐĂT VÀ NGHIỆM THU PCCC 2 NHÀ TRƯNG BÀY</div></td>
+          <td class="num" style="color:#32EACB">0.2</td>
+          <td class="num" style="color:#60a5fa">0.2</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>196</td><td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">LÀM THÔNG THOÁNG CB TƯƠNG NÓNG XƯỞNG SẢN XUẤT - NƯỚC TƯƠNG F5</div></td>
+          <td class="num" style="color:#32EACB">0.2</td>
+          <td class="num" style="color:#60a5fa">0.2</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>197</td><td><span class="site-badge">VHC</span></td>
+          <td><div class="proj-name">TỦ AN TOÀN SINH HỌC CẤP II, 4FT, MODEL: AC2-4E8
+HÃNG: ESCO - SINGAPORE
+XUẤT XỨ: INDONESIA</div></td>
+          <td class="num" style="color:#32EACB">0.2</td>
+          <td class="num" style="color:#60a5fa">0.2</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>198</td><td><span class="site-badge">MMB</span></td>
+          <td><div class="proj-name">CAMERA AI; KẾT NỐI CCTV CENTRAL</div></td>
+          <td class="num" style="color:#32EACB">0.2</td>
+          <td class="num" style="color:#60a5fa">0.2</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>199</td><td><span class="site-badge">MMB</span></td>
+          <td><div class="proj-name">THAY THẾ CỤM ĐIỀU HÒA BỊ HỎNG BLOCK</div></td>
+          <td class="num" style="color:#32EACB">0.2</td>
+          <td class="num" style="color:#60a5fa">0.2</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>200</td><td><span class="site-badge">VCF</span></td>
+          <td><div class="proj-name">NÂNG CẤP PLC MÁY 165, 150 (2 MÁY CHO 2 DÒNG MÁY)</div></td>
+          <td class="num" style="color:#32EACB">0.2</td>
+          <td class="num" style="color:#60a5fa">0.2</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>201</td><td><span class="site-badge">MHG</span></td>
+          <td><div class="proj-name">DÙNG CAMERA GIÁM SÁT BUNG ĐƯỜNG HÀN BỤNG</div></td>
+          <td class="num" style="color:#32EACB">0.2</td>
+          <td class="num" style="color:#60a5fa">0.2</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>202</td><td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">SỬA CHỮA, THAY THẾ COOLING PAD, QUẠT HÚT TRÊN MÁI NHA F5</div></td>
+          <td class="num" style="color:#32EACB">0.2</td>
+          <td class="num" style="color:#60a5fa">0.2</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>203</td><td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">LÀM LẠI CHIẾU SÁNG  XƯỞNG CHẾ BIẾN NƯỚC TƯƠNG XƯỞNG SẢN XUẤT - NƯỚC TƯƠNG F5</div></td>
+          <td class="num" style="color:#32EACB">0.2</td>
+          <td class="num" style="color:#60a5fa">0.2</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>204</td><td><span class="site-badge">NET</span></td>
+          <td><div class="proj-name">THAY THẾ HỆ THỐNG CHIẾU SÁNG VÒNG NGOÀI NHÀ MÁY</div></td>
+          <td class="num" style="color:#32EACB">0.2</td>
+          <td class="num" style="color:#60a5fa">0.2</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>205</td><td><span class="site-badge">VTF</span></td>
+          <td><div class="proj-name">CHÂM HÓA CHẤT, THEO DÕI HÓA LÝ TỰ ĐỘNG</div></td>
+          <td class="num" style="color:#32EACB">0.2</td>
+          <td class="num" style="color:#60a5fa">0.2</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>206</td><td><span class="site-badge">HGB</span></td>
+          <td><div class="proj-name">THAY THẾ THIẾT BỊ MERAKI END OF SUPPORT TẠI NHÀ MÁY HGB</div></td>
+          <td class="num" style="color:#32EACB">0.2</td>
+          <td class="num" style="color:#60a5fa">0.2</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>207</td><td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">THAY THẾ HỆ THỐNG MẠNG PROFINET ĐÓNG GÓI LINE 1&2&3&4</div></td>
+          <td class="num" style="color:#32EACB">0.2</td>
+          <td class="num" style="color:#60a5fa">0.2</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>208</td><td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">CẢI TIẾN ĐƯA TÍNH HIỆU ĐIỀU KHIỂN CHILLER + HỆ THÔNG THOÁNG XUỐNG CB
+NÂNG CẤP HMI TÍNH HIỆU TRẠM CIP AUTO 3</div></td>
+          <td class="num" style="color:#32EACB">0.2</td>
+          <td class="num" style="color:#60a5fa">0.2</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>209</td><td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">ĐẠI TU TỦ ĐIỆN CỤM MÁY XAY ỚT SCTO</div></td>
+          <td class="num" style="color:#32EACB">0.2</td>
+          <td class="num" style="color:#60a5fa">0.2</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>210</td><td><span class="site-badge">VCF</span></td>
+          <td><div class="proj-name">AN TOÀN NÂNG NGUYÊN LIỆU LÊN SÀN THAO TÁC</div></td>
+          <td class="num" style="color:#32EACB">0.2</td>
+          <td class="num" style="color:#60a5fa">0.2</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>211</td><td><span class="site-badge">MMB</span></td>
+          <td><div class="proj-name">AN TOÀN PHÒNG CHỐNG CHÁY NỔ VÀ CỨU HỘ CỨU NẠN (87 CỬA)</div></td>
+          <td class="num" style="color:#32EACB">0.2</td>
+          <td class="num" style="color:#60a5fa">0.2</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>212</td><td><span class="site-badge">VHC</span></td>
+          <td><div class="proj-name">THAY 12 MÀNG RO375 MODEL BW30-400  SỬ DỤNG TỪ NĂM 2018 & 2022</div></td>
+          <td class="num" style="color:#32EACB">0.2</td>
+          <td class="num" style="color:#60a5fa">0.2</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>213</td><td><span class="site-badge">MMB</span></td>
+          <td><div class="proj-name">ANYBUS ATLAS2 PLUS</div></td>
+          <td class="num" style="color:#32EACB">0.2</td>
+          <td class="num" style="color:#60a5fa">0.2</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>214</td><td><span class="site-badge">MSC</span></td>
+          <td><div class="proj-name">ĐẦU TƯ POUCH FILLING MACHINE FOR LISTING/HPT SAMPLES</div></td>
+          <td class="num" style="color:#32EACB">0.1</td>
+          <td class="num" style="color:#60a5fa">0.1</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>215</td><td><span class="site-badge">MSC</span></td>
+          <td><div class="proj-name">ĐẦU TƯ SENSORY CHAMBER IN APPRAISAL LAB</div></td>
+          <td class="num" style="color:#32EACB">0.1</td>
+          <td class="num" style="color:#60a5fa">0.1</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>216</td><td><span class="site-badge">MHG</span></td>
+          <td><div class="proj-name">CẢI TẠO HỆ TÁCH CHAI ĐẦU VÀO MÁY KISTER</div></td>
+          <td class="num" style="color:#32EACB">0.1</td>
+          <td class="num" style="color:#60a5fa">0.1</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>217</td><td><span class="site-badge">HGB</span></td>
+          <td><div class="proj-name">MODIFY LẠI CÁC THANG LÊN ĐỈNH BBT, CCT THEO CHUẨN SAFETY</div></td>
+          <td class="num" style="color:#32EACB">0.1</td>
+          <td class="num" style="color:#60a5fa">0.1</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>218</td><td><span class="site-badge">VHC</span></td>
+          <td><div class="proj-name">CẢI TẠO MÁY RỬA TRONG, NÂNG ÁP SUẤT RỬA VỎ BÌNH 40-50 BAR VỚI CƠ CẤU BÉC CỐ ĐỊNH - BÌNH XOAY 360</div></td>
+          <td class="num" style="color:#32EACB">0.1</td>
+          <td class="num" style="color:#60a5fa">0.1</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>219</td><td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">LẮP ĐẶT MÁY LẠNH CHO CÁC TỦ ĐIỆN MODU ĐÓNG GÓI LINE 1&2&3</div></td>
+          <td class="num" style="color:#32EACB">0.1</td>
+          <td class="num" style="color:#60a5fa">0.1</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>220</td><td><span class="site-badge">MHG</span></td>
+          <td><div class="proj-name">MES DIGITALIZED - CÁC WAREHOUSE CHƯA TRIỂN KHAI MHG</div></td>
+          <td class="num" style="color:#32EACB">0.1</td>
+          <td class="num" style="color:#60a5fa">0.1</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>221</td><td><span class="site-badge">MMB</span></td>
+          <td><div class="proj-name">MES DIGITALIZED - CÁC WAREHOUSE CHƯA TRIỂN KHAI MMB</div></td>
+          <td class="num" style="color:#32EACB">0.1</td>
+          <td class="num" style="color:#60a5fa">0.1</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>222</td><td><span class="site-badge">NET</span></td>
+          <td><div class="proj-name">MES DIGITALIZED - CÁC WAREHOUSE CHƯA TRIỂN KHAI NET</div></td>
+          <td class="num" style="color:#32EACB">0.1</td>
+          <td class="num" style="color:#60a5fa">0.1</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>223</td><td><span class="site-badge">VHC</span></td>
+          <td><div class="proj-name">MES DIGITALIZED - CÁC WAREHOUSE CHƯA TRIỂN KHAI VHC</div></td>
+          <td class="num" style="color:#32EACB">0.1</td>
+          <td class="num" style="color:#60a5fa">0.1</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>224</td><td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">MES DIGITALIZED - CÁC WAREHOUSE CHƯA TRIỂN KHAI MSI</div></td>
+          <td class="num" style="color:#32EACB">0.1</td>
+          <td class="num" style="color:#60a5fa">0.1</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>225</td><td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">CẢI TẠO THÔNG THOÁNG TRẠM BIẾN ÁP PET</div></td>
+          <td class="num" style="color:#32EACB">0.1</td>
+          <td class="num" style="color:#60a5fa">0.1</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>226</td><td><span class="site-badge">MMB</span></td>
+          <td><div class="proj-name">TRỒNG CÂY XANH KHUÔN VIÊN NHÀ MÁY</div></td>
+          <td class="num" style="color:#32EACB">0.1</td>
+          <td class="num" style="color:#60a5fa">0.1</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>227</td><td><span class="site-badge">QNW</span></td>
+          <td><div class="proj-name">VÁCH NGĂN CỔNG NHÀ MÁY CHỐNG LỤT (DẠNG TẤM NHỰA ABS) _ SMP</div></td>
+          <td class="num" style="color:#32EACB">0.1</td>
+          <td class="num" style="color:#60a5fa">0.1</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>228</td><td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">PHẦN MỀM THIẾT KẾ 3D KHUÔN PHÔI/KHUÔN CHAI POWERSHAPE</div></td>
+          <td class="num" style="color:#32EACB">0.1</td>
+          <td class="num" style="color:#60a5fa">0.1</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>229</td><td><span class="site-badge">MMB</span></td>
+          <td><div class="proj-name">FLUKE TIS20+ MAX THERMAL CAMERA</div></td>
+          <td class="num" style="color:#32EACB">0.1</td>
+          <td class="num" style="color:#60a5fa">0.1</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>230</td><td><span class="site-badge">MSC</span></td>
+          <td><div class="proj-name">NÂNG CẤP ROTOR MÁY LY TÂM</div></td>
+          <td class="num" style="color:#32EACB">0.1</td>
+          <td class="num" style="color:#60a5fa">0.1</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr>
+          <td>231</td><td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">BỌC COMPOSITE VÀ XỬ LÝ RÒ RỈ HỆ LỌC CÁT</div></td>
+          <td class="num" style="color:#32EACB">0.1</td>
+          <td class="num" style="color:#60a5fa">0.1</td>
+          <td class="num" style="color:#f59e0b">0.0</td>
+        </tr><tr style="background:#1e3a5f;border-top:2px solid #32EACB;position:sticky;bottom:0">
+      <td colspan="3" style="font-weight:900;color:#fff">TOTAL (231 dự án)</td>
+      <td class="num" style="color:#32EACB;font-weight:900">481.5</td>
+      <td class="num" style="color:#60a5fa;font-weight:900">485.2</td>
+      <td class="num" style="color:#f59e0b;font-weight:900">0.0</td>
+    </tr></tbody>
+        </table>
+      </div>
+      <div class="scroll-hint">↕ Cuộn để xem 231 dự án · Top 10 được highlight xanh đậm</div>
+    </div>
+
+    <!-- Tab 3: Unapproved Out AP -->
+    <div class="tab-pane" id="tab2">
+      <div class="table-scroll">
+        <table>
+          <colgroup><col class="c-rank"><col class="c-site"><col class="c-name"><col class="c-n"><col class="c-n"><col class="c-n"></colgroup>
+          <thead><tr><th>#</th><th>Site</th><th>Project Name</th><th class="num">Budget MUF</th><th class="num">In AP</th><th class="num">Out AP</th></tr></thead>
+          <tbody><tr style="background:#0f1f3a">
+          <td>1</td><td><span class="site-badge">NET</span></td>
+          <td><div class="proj-name">NÂNG CẤP HỆ THỐNG CHẾ BIẾN</div></td>
+          <td class="num" style="color:#32EACB">120.0</td>
+          <td class="num" style="color:#60a5fa">30.0</td>
+          <td class="num" style="color:#f59e0b">90.0</td>
+        </tr><tr style="background:#0f1f3a">
+          <td>2</td><td><span class="site-badge">MHG</span></td>
+          <td><div class="proj-name">NHÀ KHO 6900M2</div></td>
+          <td class="num" style="color:#32EACB">50.0</td>
+          <td class="num" style="color:#60a5fa">35.0</td>
+          <td class="num" style="color:#f59e0b">15.0</td>
+        </tr><tr style="background:#0f1f3a">
+          <td>3</td><td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">CẢI TẠO THÔNG THOÁNG MÌ TÔ F3</div></td>
+          <td class="num" style="color:#32EACB">11.6</td>
+          <td class="num" style="color:#60a5fa">2.9</td>
+          <td class="num" style="color:#f59e0b">8.7</td>
+        </tr><tr style="background:#0f1f3a">
+          <td>4</td><td><span class="site-badge">VCF</span></td>
+          <td><div class="proj-name">IN LASER CHO 2 MÁY 10 LANE STICK( BO GÓC VÀ EASY TEAR), BO GÓC CHO MÁY 06 LÀN</div></td>
+          <td class="num" style="color:#32EACB">9.6</td>
+          <td class="num" style="color:#60a5fa">4.5</td>
+          <td class="num" style="color:#f59e0b">5.1</td>
+        </tr><tr style="background:#0f1f3a">
+          <td>5</td><td><span class="site-badge">MSI</span></td>
+          <td><div class="proj-name">ĐẦU TƯ MÁY CẮT HẠT LỰU TỐC ĐỘ CAO CHO TỎI</div></td>
+          <td class="num" style="color:#32EACB">2.9</td>
+          <td class="num" style="color:#60a5fa">0.6</td>
+          <td class="num" style="color:#f59e0b">2.3</td>
+        </tr><tr style="background:#0f1f3a">
           <td>6</td><td><span class="site-badge">MSI</span></td>
           <td><div class="proj-name">THAY THẾ MÁY NGHIỀN SỐ 4</div></td>
           <td class="num" style="color:#32EACB">1.8</td>
           <td class="num" style="color:#60a5fa">0.8</td>
           <td class="num" style="color:#f59e0b">1.1</td>
-        </tr><tr style="background:#1a1f35"><td colspan="3" style="font-weight:800;color:#94a3b8;font-size:10px">Others (0 projects)</td>
-      <td class="num" style="color:#32EACB">0.0</td><td class="num" style="color:#60a5fa">0.0</td><td class="num" style="color:#f59e0b">0.0</td></tr>
-    <tr style="background:#1e3a5f;border-top:2px solid #32EACB"><td colspan="3" style="font-weight:900;color:#fff">TOTAL (6 projects)</td>
-      <td class="num" style="color:#32EACB;font-weight:900">163.0</td><td class="num" style="color:#60a5fa;font-weight:900">40.9</td><td class="num" style="color:#f59e0b;font-weight:900">122.1</td></tr></tbody></table></div>
+        </tr><tr style="background:#1e3a5f;border-top:2px solid #32EACB;position:sticky;bottom:0">
+      <td colspan="3" style="font-weight:900;color:#fff">TOTAL (6 dự án)</td>
+      <td class="num" style="color:#32EACB;font-weight:900">195.9</td>
+      <td class="num" style="color:#60a5fa;font-weight:900">73.8</td>
+      <td class="num" style="color:#f59e0b;font-weight:900">122.1</td>
+    </tr></tbody>
+        </table>
+      </div>
+      <div class="scroll-hint">↕ Cuộn để xem 6 dự án · Top 10 được highlight xanh đậm</div>
     </div>
   </div>
+
   <div class="footer"><a class="back-link" href="tanloo_scf_hub.html">← SC Learning Hub</a> · Rebuilt from Databricks · T5/2026</div>
 </div>
+
 <script>
 function showTab(i){
   document.querySelectorAll('.tab-pane').forEach((p,j)=>p.classList.toggle('active',i===j));
   document.querySelectorAll('.tab-btn').forEach((b,j)=>b.classList.toggle('active',i===j));
 }
+
 // YoY Chart
-const yoyCtx = document.getElementById('yoyChart').getContext('2d');
-new Chart(yoyCtx,{
+new Chart(document.getElementById('yoyChart'),{
   type:'bar',
   data:{
     labels:["ACT 2022", "ACT 2023", "ACT 2024", "ACT 2025", "AP 2026", "MUF 2026"],
@@ -338,43 +2650,41 @@ new Chart(yoyCtx,{
   },
   options:{responsive:false,plugins:{legend:{position:'bottom',labels:{color:'#94a3b8',font:{size:10,family:'Montserrat'}}},tooltip:{enabled:false}},
     scales:{x:{stacked:true,ticks:{color:'#94a3b8',font:{size:9}},grid:{display:false},border:{display:false}},
-            y:{stacked:true,display:false,grid:{display:false}}},
-    layout:{padding:{top:30,bottom:5}}
+            y:{stacked:true,display:false,grid:{display:false}}},layout:{padding:{top:30,bottom:5}}
   },
   plugins:[{id:'yoyLbl',afterDatasetsDraw(c){
     const {ctx}=c; const totals=[1859, 1086, 1660, 2103, 1388.0, 1504.0];
+    const carried=[1105, 721, 300, 474, 537.0, 491.0]; const newv=[754, 365, 1360, 1629, 851.0, 1013.0];
     c.getDatasetMeta(0).data.forEach((bar,i)=>{
-      const h0=Math.abs(bar.base-bar.y); if(h0>20){
+      const h=Math.abs(bar.base-bar.y); if(h>20){
         ctx.save(); ctx.textAlign='center'; ctx.fillStyle='#F7C9CE'; ctx.font='700 11px Montserrat';
-        ctx.fillText([1105, 721, 300, 474, 537.0, 491.0][i],bar.x,(bar.y+bar.base)/2); ctx.restore();
+        ctx.fillText(carried[i],bar.x,(bar.y+bar.base)/2); ctx.restore();
       }
     });
     c.getDatasetMeta(1).data.forEach((bar,i)=>{
       const h=Math.abs(bar.base-bar.y); if(h>20){
         ctx.save(); ctx.textAlign='center'; ctx.fillStyle='#085447'; ctx.font='700 11px Montserrat';
-        ctx.fillText([754, 365, 1360, 1629, 851.0, 1013.0][i],bar.x,(bar.y+bar.base)/2); ctx.restore();
+        ctx.fillText(newv[i],bar.x,(bar.y+bar.base)/2); ctx.restore();
       }
-      // total on top
       ctx.save(); ctx.textAlign='center'; ctx.fillStyle='#e8a020'; ctx.font='900 12px Montserrat';
       ctx.fillText(totals[i],bar.x,bar.y-6); ctx.restore();
     });
   }}]
 });
+
 // Waterfall
-const wfCtx = document.getElementById('wfChart').getContext('2d');
 const wfLabels=['AP','Cancelled','Updated\nBudget','Total\nOut AP','Total Budget\nMUF','Un.proved\nIn AP','Un.proved\nOut AP','Approved\nOut AP','Approved\nIn AP','Carried\nforward'];
 const baseD=[0,1207.2,1207.2,1207.2,0,665.8,207.7,665.8,490.5,0];
 const carrD=[536.9,0,0,0,0,0,0,0,0,0];
 const incrD=[850.6,180.3,0,379.6,1503.5,458.1,56.3,323.3,175.3,490.5];
 const incrC=['#32EACB','#E0374A','#E0374A','#FFE699','#32EACB','#32EACB','#FFE699','#FFE699','#32EACB','#13BFA2'];
-new Chart(wfCtx,{type:'bar',data:{labels:wfLabels,datasets:[
+new Chart(document.getElementById('wfChart'),{type:'bar',data:{labels:wfLabels,datasets:[
   {data:baseD,backgroundColor:'rgba(0,0,0,0)',stack:'s',barPercentage:0.85,categoryPercentage:0.9},
   {data:carrD,backgroundColor:'#13BFA2',borderRadius:{topLeft:0,topRight:0,bottomLeft:4,bottomRight:4},stack:'s',borderSkipped:false,barPercentage:0.85,categoryPercentage:0.9},
   {data:incrD,backgroundColor:incrC,borderRadius:{topLeft:4,topRight:4,bottomLeft:0,bottomRight:0},stack:'s',borderSkipped:false,barPercentage:0.85,categoryPercentage:0.9}
 ]},options:{responsive:false,plugins:{legend:{display:false},tooltip:{enabled:false}},
   scales:{x:{stacked:true,ticks:{color:'#94a3b8',font:{size:9,weight:'600',family:'Montserrat'},maxRotation:0,callback:(v,i)=>wfLabels[i].split('\n')},grid:{display:false},border:{display:false}},
-          y:{stacked:true,display:false,max:2105.0,grid:{display:false}}},
-  layout:{padding:{top:50,bottom:20}}
+          y:{stacked:true,display:false,max:2105.0,grid:{display:false}}},layout:{padding:{top:50,bottom:20}}
 },plugins:[{id:'wfl',afterDatasetsDraw(c){
   const {ctx}=c;
   [1,2].forEach(ds=>c.getDatasetMeta(ds).data.forEach((bar,i)=>{
